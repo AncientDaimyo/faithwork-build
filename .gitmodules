@@ -1,0 +1,3 @@
+[submodule "faithwork-slim"]
+	path = faithwork-slim
+	url = https://github.com/AncientDaimyo/faithwork-slim

@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./host/api/Dockerfile
+    volumes:
+    # Mountlocal 'app' directory to the Nginx root
+      - ./app:/var/www/html
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: faithwork
+      MYSQL_USER: borat
+      MYSQL_PASSWORD: borat
+    volumes:
+      - ./host/mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
