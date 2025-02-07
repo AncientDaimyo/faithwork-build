@@ -1,5 +1,6 @@
 <?php
 
+use App\Auth\Application\Boundary\AuthServiceBoundary;
 use App\Product\Application\Boundary\ProductServiceBoundary;
 use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
 use Doctrine\DBAL\Connection;
@@ -11,6 +12,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Doctrine\DBAL\DriverManager;
 use App\Shared\Utility\Migrations\Api\MigrationExecutor;
 use App\Product\Application\Service\ProductService;
+use App\Auth\Application\Service\AuthService;
 
 return [
     'settings' => function () {
@@ -44,6 +46,14 @@ return [
         return $container->get(Connection::class);
     },
 
+    'secretKey' => function (ContainerInterface $container) {
+        return $container->get('settings')['secretKey'];
+    },
+
+    'domain' => function (ContainerInterface $container) {
+        return $container->get('settings')['domain'];
+    },
+
     Connection::class => function (ContainerInterface $container) {
         return DriverManager::getConnection([
             'driver' => $container->get('settings')['database']['driver'],
@@ -71,5 +81,9 @@ return [
 
     ProductServiceBoundary::class => function (ContainerInterface $container) {
         return $container->get(ProductService::class);
+    },
+
+    AuthServiceBoundary::class => function (ContainerInterface $container) {
+        return $container->get(AuthService::class);
     },
 ];

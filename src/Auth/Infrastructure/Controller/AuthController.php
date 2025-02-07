@@ -23,16 +23,23 @@ class AuthController extends Controller
     public function login(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
-        if (!$this->authService->login($data)) {
+        try {
+            $token = $this->authService->login($data);
+        } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }
+
+        $response->getBody()->write(json_encode($token));
+
         return $response->withStatus(200);
     }
 
     public function register(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
-        if (!$this->authService->register($data)) {
+        try {
+            $this->authService->register($data);
+        } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }
         return $response->withStatus(200);
@@ -46,9 +53,14 @@ class AuthController extends Controller
             return $response->withStatus(400);
         }
 
-        if (!$this->authService->refresh($refreshToken)) {
+        try {
+            $token = $this->authService->refresh($refreshToken);
+        } catch (\InvalidArgumentException $exception) {
+            $response->getBody()->write(json_encode($exception->getMessage()));
             return $response->withStatus(400);
         }
+
+        $response->getBody()->write(json_encode($token));
 
         return $response->withStatus(200);
     }

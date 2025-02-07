@@ -47,7 +47,6 @@ return function (App $app) {
             $app->post('/register', \App\Auth\Infrastructure\Controller\AuthController::class . ':register');
             $app->post('/logout', \App\Auth\Infrastructure\Controller\AuthController::class . ':logout');
             $app->post('/refresh', \App\Auth\Infrastructure\Controller\AuthController::class . ':refresh');
-            $app->post('/token', \App\Auth\Infrastructure\Controller\AuthController::class . ':getToken');
         });
 
         $app->group('/order', function ($app) {

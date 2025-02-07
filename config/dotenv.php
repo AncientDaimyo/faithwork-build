@@ -12,7 +12,9 @@ return function () {
             'DB_USER',
             'DB_PASSWORD',
             'DB_PORT',
-            'DB_DRIVER'
+            'DB_DRIVER',
+            'JWT_SECRET_KEY',
+            'DOMAIN'
         ]
     );
 };

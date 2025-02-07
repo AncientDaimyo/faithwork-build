@@ -16,5 +16,9 @@ return [
         'log_error_details' => true
     ],
 
-    'automigration_off' => true
+    'automigration_off' => true,
+    
+    'secretKey' => $_ENV['JWT_SECRET_KEY'],
+    
+    'domain' => $_ENV['DOMAIN'],
 ];
