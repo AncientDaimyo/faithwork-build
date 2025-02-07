@@ -47,7 +47,7 @@ return new class ($container, __FILE__) extends Migration
 
     public function down(): void
     {
-        $this->connection->createSchemaManager()->dropTable($this->tableName);
+        // $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };
 

@@ -4,38 +4,31 @@ use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
 use App\Shared\Utility\Migrations\Migration\Migration;
 
-return new class ($container, __FILE__) extends Migration
+return new class($container, __FILE__) extends Migration
 {
-    protected $tableName = 'property_values';
-
+    protected $tableName = 'user_tokens';
     protected $columns = [
-        'id' => [
+        'user_id' => [
             'type' => Types::INTEGER,
             'options' => [
-                'unsigned' => true,
-                'autoincrement' => true,
                 'notnull' => true,
+                'autoincrement' => false
             ],
         ],
-        'type_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
-                'notnull' => true,
-            ]
-        ],
-        'value' => [
+        'auth_token' => [
             'type' => Types::STRING,
             'options' => [
-                'length' => 255,
-                'notnull' => true,
-            ]
+                'notnull' => false,
+                'length' => 255
+            ],
         ],
-        'product_id' => [
-            'type' => Types::INTEGER,
+        'refresh_token' => [
+            'type' => Types::STRING,
             'options' => [
-                'notnull' => true,
-            ]
-        ]
+                'notnull' => false,
+                'length' => 255
+            ],
+        ],
     ];
 
     public function up(): void
@@ -46,13 +39,13 @@ return new class ($container, __FILE__) extends Migration
             $table->addColumn($name, $options['type'], $options['options']);
         }
 
-        $table->setPrimaryKey(['id']);
+        $table->setPrimaryKey(['user_id']);
 
         $this->connection->createSchemaManager()->createTable($table);
     }
 
     public function down(): void
     {
-        // $this->connection->createSchemaManager()->dropTable($this->tableName);
+        $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };

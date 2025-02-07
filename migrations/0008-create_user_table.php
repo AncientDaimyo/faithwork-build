@@ -4,39 +4,54 @@ use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
 use App\Shared\Utility\Migrations\Migration\Migration;
 
-return new class ($container, __FILE__) extends Migration
+return new class($container, __FILE__) extends Migration
 {
-    protected $tableName = 'property_values';
+    protected $tableName = 'users';
 
     protected $columns = [
         'id' => [
             'type' => Types::INTEGER,
             'options' => [
-                'unsigned' => true,
                 'autoincrement' => true,
+                'notnull' => true
+            ]
+        ],
+        'email' => [
+            'type' => Types::STRING,
+            'options' => [
                 'notnull' => true,
+                'length' => 255
             ],
         ],
-        'type_id' => [
-            'type' => Types::INTEGER,
+        'password' => [
+            'type' => Types::STRING,
+            'options' => [
+                'notnull' => true,
+                'length' => 255
+            ],
+        ],
+        'role' => [
+            'type' => Types::STRING,
+            'options' => [
+                'notnull' => true,
+                'length' => 255
+            ]
+        ],
+        'activated' => [
+            'type' => Types::BOOLEAN,
             'options' => [
                 'notnull' => true,
             ]
         ],
-        'value' => [
+        'activation_code' => [
             'type' => Types::STRING,
             'options' => [
                 'length' => 255,
-                'notnull' => true,
-            ]
-        ],
-        'product_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
-                'notnull' => true,
+                'notnull' => false
             ]
         ]
     ];
+
 
     public function up(): void
     {
@@ -53,6 +68,6 @@ return new class ($container, __FILE__) extends Migration
 
     public function down(): void
     {
-        // $this->connection->createSchemaManager()->dropTable($this->tableName);
+        $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };
