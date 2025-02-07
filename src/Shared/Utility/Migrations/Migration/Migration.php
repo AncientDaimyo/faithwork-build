@@ -1,15 +1,18 @@
 <?php
+
 namespace App\Shared\Utility\Migrations\Migration;
 
 use Psr\Container\ContainerInterface;
+use Doctrine\DBAL\Connection as DbalConnection;
+
 
 class Migration
 {
     protected ContainerInterface $container;
 
-    protected $connection;
+    protected DbalConnection $connection;
 
-    protected $filename;
+    private string $filename;
 
     final public function __construct(ContainerInterface $container, string $filename)
     {
@@ -28,7 +31,7 @@ class Migration
     {
         return;
     }
-    
+
     public function down(): void
     {
         return;
@@ -41,9 +44,10 @@ class Migration
 
     public function getFilename(): string
     {
-        return array_pop(explode(DIRECTORY_SEPARATOR, $this->filename));
+        $path = explode(
+            DIRECTORY_SEPARATOR,
+            $this->filename
+        );
+        return array_pop($path);
     }
 }
-
-
-

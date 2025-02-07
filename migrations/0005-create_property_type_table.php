@@ -1,12 +1,12 @@
 <?php
 
-use App\Shared\Utility\Migrations\Migration\Migration;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
+use App\Shared\Utility\Migrations\Migration\Migration;
 
-return new class($container, __FILE__) extends Migration
+return new class ($container, __FILE__) extends Migration
 {
-    protected $tableName = 'products';
+    protected $tableName = 'property_types';
 
     protected $columns = [
         'id' => [
@@ -21,26 +21,6 @@ return new class($container, __FILE__) extends Migration
             'type' => Types::STRING,
             'options' => [
                 'length' => 255,
-                'notnull' => true,
-            ],
-        ],
-        'price' => [
-            'type' => Types::DECIMAL,
-            'options' => [
-                'precision' => 10,
-                'scale' => 2,
-                'notnull' => true,
-            ],
-        ],
-        'category_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
-                'notnull' => true,
-            ],
-        ],
-        'description_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
                 'notnull' => true,
             ],
         ]
@@ -64,4 +44,3 @@ return new class($container, __FILE__) extends Migration
         $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };
-

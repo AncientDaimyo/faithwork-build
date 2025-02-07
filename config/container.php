@@ -1,17 +1,16 @@
 <?php
 
-use App\Shared\Controller\BaseController;
-use Doctrine\DBAL\DriverManager;
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
+use App\Product\Application\Boundary\ProductServiceBoundary;
+use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
+use Doctrine\DBAL\Connection;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
-use App\Shared\Repository\RepositoryInterface;
-use App\Shared\Repository\BaseRepository;
-use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Doctrine\DBAL\DriverManager;
 use App\Shared\Utility\Migrations\Api\MigrationExecutor;
-use App\Shared\Utility\Migrations\Migration\Migration;
+use App\Product\Application\Service\ProductService;
 
 return [
     'settings' => function () {
@@ -42,6 +41,10 @@ return [
     },
 
     'connection' => function (ContainerInterface $container) {
+        return $container->get(Connection::class);
+    },
+
+    Connection::class => function (ContainerInterface $container) {
         return DriverManager::getConnection([
             'driver' => $container->get('settings')['database']['driver'],
             'host' => $container->get('settings')['database']['host'],
@@ -52,21 +55,21 @@ return [
         ]);
     },
 
+    MigrationExecutor::class => function (ContainerInterface $container) {
+        return new MigrationExecutor(
+            $container->get('adapter'),
+            $container->get('migrations_path'),
+            $container
+        );
+    },
+
     'adapter' => function (ContainerInterface $container) {
-        return new DbalAdapter($container->get('connection'), 'migrations');
+        return new DbalAdapter($container->get(Connection::class), 'migrations');
     },
 
     'migrations_path' => dirname(__DIR__, 1) . DIRECTORY_SEPARATOR . 'migrations',
 
-    BaseController::class => function (ContainerInterface $container) {
-        return new BaseController($container, $container->get(RepositoryInterface::class));
-    },  
-
-    RepositoryInterface::class => function (ContainerInterface $container) {
-        return new BaseRepository($container->get('connection'));
-    },
-
-    Migration::class => function (ContainerInterface $container) {
-        return new Migration($container);
+    ProductServiceBoundary::class => function (ContainerInterface $container) {
+        return $container->get(ProductService::class);
     },
 ];

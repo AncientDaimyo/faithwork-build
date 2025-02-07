@@ -43,21 +43,27 @@ class MigrationExecutor
         }
     }
 
-    public function down()
+    public function down(): void
     {
-        foreach ($this->getMigrations($this->getVersion()) as $migration) {
+        foreach ($this->getMigrations($this->getVersion(), false) as $migration) {
             $this->adapter->down($migration);
         }
     }
 
-    public function getMigrations(int $version)
+    public function getMigrations(int $version, bool $up = true)
     {
         $migrations = [];
 
         foreach ($this->migrations as $path) {
             $migrationNumber = $this->getMigrationNumberFromPath($path);
-            if ($migrationNumber <= $version) {
-                continue;
+            if ($up) {
+                if ($migrationNumber <= $version) {
+                    continue;
+                }
+            } else {
+                if ($migrationNumber > $version) {
+                    continue;
+                }
             }
 
             $migrations[] = $path;

@@ -1,44 +1,27 @@
 <?php
 
-use App\Shared\Utility\Migrations\Migration\Migration;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
+use App\Shared\Utility\Migrations\Migration\Migration;
 
-return new class($container, __FILE__) extends Migration
+return new class ($container, __FILE__) extends Migration
 {
-    protected $tableName = 'products';
-
+    protected $tableName = 'product_sizes';
     protected $columns = [
         'id' => [
             'type' => Types::INTEGER,
             'options' => [
-                'unsigned' => true,
                 'autoincrement' => true,
-                'notnull' => true,
-            ],
+                'notnull' => true
+            ]
         ],
-        'name' => [
-            'type' => Types::STRING,
-            'options' => [
-                'length' => 255,
-                'notnull' => true,
-            ],
-        ],
-        'price' => [
-            'type' => Types::DECIMAL,
-            'options' => [
-                'precision' => 10,
-                'scale' => 2,
-                'notnull' => true,
-            ],
-        ],
-        'category_id' => [
+        'product_id' => [
             'type' => Types::INTEGER,
             'options' => [
                 'notnull' => true,
             ],
         ],
-        'description_id' => [
+        'size_id' => [
             'type' => Types::INTEGER,
             'options' => [
                 'notnull' => true,
@@ -56,6 +39,8 @@ return new class($container, __FILE__) extends Migration
 
         $table->setPrimaryKey(['id']);
 
+        $table->addUniqueIndex(['product_id', 'size_id'], 'unique_product_size');
+
         $this->connection->createSchemaManager()->createTable($table);
     }
 
@@ -64,4 +49,3 @@ return new class($container, __FILE__) extends Migration
         $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };
-

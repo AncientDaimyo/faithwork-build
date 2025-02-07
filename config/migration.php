@@ -3,11 +3,8 @@
 use App\Shared\Utility\Migrations\Api\MigrationExecutor;
 
 return function ($container) {
-    $migrationExecutor = new MigrationExecutor(
-        $container->get('adapter'),
-        $container->get('migrations_path'),
-        $container
-    );
-
-    $migrationExecutor->up();
+    if ($container->get('settings')['automigration_off']) {
+        return;
+    }
+    $container->get(MigrationExecutor::class)->up();
 };

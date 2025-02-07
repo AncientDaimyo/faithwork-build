@@ -4,9 +4,9 @@ use App\Shared\Utility\Migrations\Migration\Migration;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
 
-return new class($container, __FILE__) extends Migration
+return new class ($container, __FILE__) extends Migration
 {
-    protected $tableName = 'products';
+    protected $tableName = 'categories';
 
     protected $columns = [
         'id' => [
@@ -24,24 +24,10 @@ return new class($container, __FILE__) extends Migration
                 'notnull' => true,
             ],
         ],
-        'price' => [
-            'type' => Types::DECIMAL,
-            'options' => [
-                'precision' => 10,
-                'scale' => 2,
-                'notnull' => true,
-            ],
-        ],
-        'category_id' => [
+        'parent_id' => [
             'type' => Types::INTEGER,
             'options' => [
-                'notnull' => true,
-            ],
-        ],
-        'description_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
-                'notnull' => true,
+                'notnull' => false,
             ],
         ]
     ];
@@ -55,7 +41,7 @@ return new class($container, __FILE__) extends Migration
         }
 
         $table->setPrimaryKey(['id']);
-
+        
         $this->connection->createSchemaManager()->createTable($table);
     }
 

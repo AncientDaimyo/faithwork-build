@@ -6,41 +6,21 @@ use Doctrine\DBAL\Types\Types;
 
 return new class($container, __FILE__) extends Migration
 {
-    protected $tableName = 'products';
+    protected $tableName = 'sizes';
 
     protected $columns = [
         'id' => [
             'type' => Types::INTEGER,
             'options' => [
                 'unsigned' => true,
-                'autoincrement' => true,
+                'autoincrement' => true,    
                 'notnull' => true,
             ],
         ],
-        'name' => [
+        'size' => [
             'type' => Types::STRING,
             'options' => [
                 'length' => 255,
-                'notnull' => true,
-            ],
-        ],
-        'price' => [
-            'type' => Types::DECIMAL,
-            'options' => [
-                'precision' => 10,
-                'scale' => 2,
-                'notnull' => true,
-            ],
-        ],
-        'category_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
-                'notnull' => true,
-            ],
-        ],
-        'description_id' => [
-            'type' => Types::INTEGER,
-            'options' => [
                 'notnull' => true,
             ],
         ]
@@ -64,4 +44,3 @@ return new class($container, __FILE__) extends Migration
         $this->connection->createSchemaManager()->dropTable($this->tableName);
     }
 };
-
