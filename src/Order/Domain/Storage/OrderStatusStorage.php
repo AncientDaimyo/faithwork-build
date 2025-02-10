@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Order\Domain\Storage;
+
 class OrderStatusStorage
 {
     public const STATUS_NEW = 0;

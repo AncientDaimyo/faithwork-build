@@ -3,37 +3,98 @@
 namespace App\Order\Application\Service;
 
 use App\Order\Application\Boundary\OrderServiceBoundary;
+use App\Order\Domain\Builder\OrderBuilder;
+use App\Order\Domain\Entity\Order;
+use App\Order\Domain\Entity\OrderItem;
+use App\Order\Infrastructure\Repository\OrderItemRepository;
+use App\Order\Infrastructure\Repository\OrderRepository;
 
 class OrderService implements OrderServiceBoundary
 {
+    protected OrderRepository $orderRepository;
+
+    public function __construct(
+        OrderRepository $orderRepository
+    ) {
+        $this->orderRepository = $orderRepository;
+    }
+
     public function createOrder(array $data): int
     {
-        // TODO: Implement createOrder() method.
-        return 0;
+        try {
+            $order = $this->createOrderBuilder()
+                ->build($data);
+            return $this->orderRepository->saveOrder($order);
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 
-    public function updateOrder(int $id, array $data): bool
+    public function updateOrder(int $id, array $data): void
     {
-        // TODO: Implement updateOrder() method.
-        return false;
+        try {
+            $order = $this->createOrderBuilder()
+                ->build($data);
+            $this->orderRepository->updateOrder($order);
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 
-    public function deleteOrder(int $id): bool
+    public function deleteOrder(int $id): void
     {
-        // TODO: Implement deleteOrder() method.
-        return false;
+        try {
+            $this->orderRepository->deleteOrder($id);
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 
-    public function getOrders(): array
+    public function getOrders(int $customerId): array
     {
-        // TODO: Implement getOrders() method.
-        return [];
+        $data = $this->orderRepository->getByCustomerId($customerId);
+
+        if (empty($data)) {
+            return [];
+        }
+
+        $orderObjects = [];
+
+        foreach ($data as $orderData) {
+            $orderObjects[] = $this->createOrderBuilder()
+                ->build($orderData);
+        }
+
+        $orders = [];
+
+        foreach ($orderObjects as $order) {
+            $orders[] = $order->jsonSerialize();
+        }
+
+        return $orders;
     }
 
     public function getOrder(int $id): array
     {
-        // TODO: Implement getOrder() method.
-        return [];
+        $data = $this->orderRepository->getById($id);
+
+        if (empty($data)) {
+            return [];
+        }
+
+        return $this->createOrderBuilder()
+            ->build($data)
+            ->jsonSerialize();
     }
 
+    protected function validate(array $data): bool
+    {
+        // TODO: Implement validate() method.
+        return false;
+    }
+
+    protected function createOrderBuilder(): OrderBuilder
+    {
+        return new OrderBuilder();
+    }
 }

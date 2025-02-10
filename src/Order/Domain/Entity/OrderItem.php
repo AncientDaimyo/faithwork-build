@@ -11,13 +11,13 @@ class OrderItem extends Entity
     protected ?int $productId;
     protected int $quantity;
     protected $price;
-    public function __construct()
+    public function __construct(int $productId, int $quantity, $price, ?int $id, ?int $orderId)
     {
-        $this->id = null;
-        $this->orderId = null;
-        $this->productId = null;
-        $this->quantity = 1;
-        $this->price = null;
+        $this->id = $id;
+        $this->orderId = $orderId;
+        $this->productId = $productId;
+        $this->quantity = $quantity;
+        $this->price = $price;
     }
 
     public function jsonSerialize(): mixed

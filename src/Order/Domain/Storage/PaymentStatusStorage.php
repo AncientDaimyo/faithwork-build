@@ -1,4 +1,6 @@
-<?
+<?php
+
+namespace App\Order\Domain\Storage;
 
 class PaymentStatusStorage
 {

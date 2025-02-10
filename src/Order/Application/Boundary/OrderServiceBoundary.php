@@ -6,11 +6,11 @@ interface OrderServiceBoundary
 {
     public function createOrder(array $data): int;
 
-    public function updateOrder(int $id, array $data): bool;
+    public function updateOrder(int $id, array $data): void;
 
-    public function deleteOrder(int $id): bool;
+    public function deleteOrder(int $id): void;
 
-    public function getOrders(): array;
+    public function getOrders(int $customerId): array;
 
     public function getOrder(int $id): array;
 }

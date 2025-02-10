@@ -3,8 +3,8 @@
 namespace App\Order\Domain\Entity;
 
 use App\Shared\Domain\Entity\Entity;
-use OrderStatusStorage;
-use PaymentStatusStorage;
+use App\Order\Domain\Storage\OrderStatusStorage;
+use App\Order\Domain\Storage\PaymentStatusStorage;
 
 class Order extends Entity
 {
@@ -21,6 +21,11 @@ class Order extends Entity
         $this->customerId = null;
         $this->orderStatus = OrderStatusStorage::STATUS_NEW;
         $this->paymentStatus = PaymentStatusStorage::UNPAID;
+    }
+
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
     }
 
     public function setItems(array $items): void
@@ -46,11 +51,30 @@ class Order extends Entity
     public function jsonSerialize(): mixed
     {
         return [
-            'id' => $this->id,
+            'id' => $this->id ?? null,
             'customerId' => $this->customerId,
             'orderStatus' => $this->orderStatus,
             'paymentStatus' => $this->paymentStatus,
-            'items' => $this->items,
+            'items' => $this->serializeItems(),
+            'total' => $this->calculateTotal(),
         ];
+    }
+
+    protected function serializeItems(): array
+    {
+        $items = [];
+        foreach ($this->items as $item) {
+            $items[] = $item->jsonSerialize();
+        }
+        return $items;
+    }
+
+    public function calculateTotal(): float
+    {
+        $total = 0.0;
+        foreach ($this->items as $item) {
+            $total += $item->price * $item->quantity;
+        }
+        return $total;
     }
 }
