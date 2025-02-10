@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Test\Unit\Product\Application;
+
 use PHPUnit\Framework\TestCase;
 use App\Product\Application\Service\ProductService;
 use App\Product\Infrastructure\Repository\ProductRepository;
