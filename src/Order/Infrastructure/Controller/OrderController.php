@@ -20,7 +20,7 @@ class OrderController extends Controller
 
     public function getOrders(Request $request, Response $response): Response
     {
-        $orders = $this->orderServiceBoundary->getOrders();
+        $orders = $this->orderServiceBoundary->getOrders($request->getParsedBody()['customerId']);
         if (empty($orders)) {
             return $response->withStatus(404);
         }
@@ -30,7 +30,7 @@ class OrderController extends Controller
 
     public function getOrder(Request $request, Response $response, array $args): Response
     {
-        $order = $this->orderServiceBoundary->getOrder($args['id']);
+        $order = $this->orderServiceBoundary->getOrder($request->getParsedBody()['orderId']);
         if (empty($order)) {
             return $response->withStatus(404);
         }
@@ -53,7 +53,7 @@ class OrderController extends Controller
     {
         $data = $request->getParsedBody();
         try {
-            $this->orderServiceBoundary->updateOrder($args['id'], $data);
+            $this->orderServiceBoundary->updateOrder($data['id'], $data);
         } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }

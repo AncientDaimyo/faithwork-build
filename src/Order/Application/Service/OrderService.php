@@ -4,9 +4,6 @@ namespace App\Order\Application\Service;
 
 use App\Order\Application\Boundary\OrderServiceBoundary;
 use App\Order\Domain\Builder\OrderBuilder;
-use App\Order\Domain\Entity\Order;
-use App\Order\Domain\Entity\OrderItem;
-use App\Order\Infrastructure\Repository\OrderItemRepository;
 use App\Order\Infrastructure\Repository\OrderRepository;
 
 class OrderService implements OrderServiceBoundary
