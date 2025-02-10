@@ -2,3 +2,4 @@ vendor/
 tmp/
 .env
 *.uxf
+.vscode
