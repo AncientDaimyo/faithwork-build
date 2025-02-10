@@ -1,18 +1,20 @@
 <?php
 
 use App\Auth\Application\Boundary\AuthServiceBoundary;
+use App\Auth\Application\Service\AuthService;
+use App\Order\Application\Boundary\OrderServiceBoundary;
+use App\Order\Application\Service\OrderService;
 use App\Product\Application\Boundary\ProductServiceBoundary;
+use App\Product\Application\Service\ProductService;
 use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
+use App\Shared\Utility\Migrations\Api\MigrationExecutor;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Doctrine\DBAL\DriverManager;
-use App\Shared\Utility\Migrations\Api\MigrationExecutor;
-use App\Product\Application\Service\ProductService;
-use App\Auth\Application\Service\AuthService;
 
 return [
     'settings' => function () {
@@ -85,5 +87,9 @@ return [
 
     AuthServiceBoundary::class => function (ContainerInterface $container) {
         return $container->get(AuthService::class);
+    },
+
+    OrderServiceBoundary::class => function (ContainerInterface $container) {
+        return $container->get(OrderService::class);
     },
 ];
