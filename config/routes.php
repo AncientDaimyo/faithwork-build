@@ -23,6 +23,15 @@ return function (App $app) {
             $response->getBody()->write($openapi->toJson());
             return $response;
         });
+
+
+
+        $app->get('/ui', function ($request, $response, $args) {
+            $response = $response->withHeader('Content-type', 'text/html');
+            $response->getBody()->write(file_get_contents(__DIR__ . '/../public/dist/index.html'));
+            return $response;
+        });
+
         $app->group('/admin', function ($app) {
             $app->group('/migrations', function ($app) {
                 $app->get('/up', \App\Admin\Infrastructure\Controller\AdminMigrationsController::class . ':up');
@@ -55,6 +64,42 @@ return function (App $app) {
             $app->post('/orders', \App\Order\Infrastructure\Controller\OrderController::class . ':createOrder');
             $app->put('/orders/{id}', \App\Order\Infrastructure\Controller\OrderController::class . ':updateOrder');
             $app->delete('/orders/{id}', \App\Order\Infrastructure\Controller\OrderController::class . ':deleteOrder');
+        });
+
+        $app->get('/{path}', function ($request, $response, $args) {
+            $path = explode('.', (string)$request->getAttribute('path'));
+            switch ($path[1]) {
+                case 'css':
+                    $response = $response->withHeader('Content-type', 'text/css');
+                    try {
+                        $response->getBody()->write(file_get_contents(__DIR__ . '/../public/dist/' . $path[0] . '.css'));
+                        $response = $response->withStatus(200);
+                    } catch (\Exception $e) {
+                        $response = $response->withStatus(404);
+                    }
+                    break;
+                case 'js':
+                    $response = $response->withHeader('Content-type', 'application/javascript');
+                    try {
+                        $response->getBody()->write(file_get_contents(__DIR__ . '/../public/dist/' . $path[0] . '.js'));
+                        $response = $response->withStatus(200);
+                    } catch (\Exception $e) {
+                        $response = $response->withStatus(404);
+                    }
+                    break;
+                case 'png':
+                    $response = $response->withHeader('Content-type', 'image/png');
+                    try {
+                        $response->getBody()->write(file_get_contents(__DIR__ . '/../public/dist/' . $path[0] . '.png'));
+                        $response = $response->withStatus(200);
+                    } catch (\Exception $e) {
+                        $response = $response->withStatus(404);
+                    }
+                    break;
+                default:
+                    $response = $response->withStatus(404);
+            }
+            return $response;
         });
     });
 };
