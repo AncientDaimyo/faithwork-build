@@ -9,6 +9,7 @@ use App\Auth\Infrastructure\Repository\UserTokenRepository;
 use Psr\Container\ContainerInterface;
 use App\Shared\Utility\Mailer\MailerService;
 use Firebase\JWT\JWT;
+use Slim\Psr7\Request;
 
 class AuthService implements AuthServiceBoundary
 {
@@ -160,5 +161,14 @@ class AuthService implements AuthServiceBoundary
         }
 
         return true;
+    }
+
+    public function checkRequest(Request $request): bool
+    {
+        $token = $request->getHeaderLine('Authorization');
+        if (!$token) {
+            return false;
+        }
+        return $this->auth($token);
     }
 }

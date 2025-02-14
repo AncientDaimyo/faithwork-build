@@ -3,6 +3,7 @@
 namespace App\Auth\Application\Boundary;
 
 use App\Auth\Domain\Entity\Token;
+use Slim\Psr7\Request;
 
 interface AuthServiceBoundary
 {
@@ -12,4 +13,5 @@ interface AuthServiceBoundary
     public function logout(array $data): void;
     public function activateRegistration(string $activationCode): Token;
     public function auth(string $token): bool;
+    public function checkRequest(Request $request): bool;
 }

@@ -4,23 +4,37 @@ namespace App\Order\Infrastructure\Controller;
 
 use App\Shared\Infrastructure\Controller\Controller;
 use App\Order\Application\Boundary\OrderServiceBoundary;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Psr7\Response;
+use Slim\Psr7\Request;
 use Psr\Container\ContainerInterface;
+use OpenApi\Attributes as OA;
+use App\Auth\Application\Boundary\AuthServiceBoundary;
 
 class OrderController extends Controller
 {
-    private OrderServiceBoundary $orderServiceBoundary;
+    private OrderServiceBoundary $orderService;
+    private AuthServiceBoundary $authService;
 
-    public function __construct(ContainerInterface $container, OrderServiceBoundary $orderServiceBoundary)
-    {
+    public function __construct(
+        ContainerInterface $container, 
+        OrderServiceBoundary $orderServiceBoundary,
+        AuthServiceBoundary $authServiceBoundary
+    ){
         parent::__construct($container);
-        $this->orderServiceBoundary = $orderServiceBoundary;
+        $this->orderService = $orderServiceBoundary;
+        $this->authService = $authServiceBoundary;
     }
 
+    #[OA\Get(path: '/api/order/orders', tags: ['order'])]
+    #[OA\Response(response: 200, description: 'Returns a list of orders')]
+    #[OA\Response(response: 404, description: 'No orders found')]
     public function getOrders(Request $request, Response $response): Response
     {
-        $orders = $this->orderServiceBoundary->getOrders($request->getParsedBody()['customerId']);
+        if (!$this->authService->checkRequest($request)) {
+            return $response->withStatus(401);
+        }
+
+        $orders = $this->orderService->getOrders($request->getParsedBody()['customerId']);
         if (empty($orders)) {
             return $response->withStatus(404);
         }
@@ -28,9 +42,16 @@ class OrderController extends Controller
         return $response->withStatus(200);
     }
 
+    #[OA\Get(path: '/api/order/orders/{id}', tags: ['order'])]
+    #[OA\Response(response: 200, description: 'Returns a order')]
+    #[OA\Response(response: 404, description: 'No order found')]
     public function getOrder(Request $request, Response $response, array $args): Response
     {
-        $order = $this->orderServiceBoundary->getOrder($request->getParsedBody()['orderId']);
+        if (!$this->authService->checkRequest($request)) {
+            return $response->withStatus(401);
+        }
+        
+        $order = $this->orderService->getOrder($request->getParsedBody()['orderId']);
         if (empty($order)) {
             return $response->withStatus(404);
         }
@@ -38,33 +59,54 @@ class OrderController extends Controller
         return $response->withStatus(200);
     }
 
+    #[OA\Post(path: '/api/order/orders', tags: ['order'])]
+    #[OA\Response(response: 200, description: 'Creates a new order')]
+    #[OA\Response(response: 400, description: 'Invalid data')]
     public function createOrder(Request $request, Response $response): Response
     {
+        if (!$this->authService->checkRequest($request)) {
+            return $response->withStatus(401);
+        }
+
         $data = $request->getParsedBody();
         try {
-            $this->orderServiceBoundary->createOrder($data);
+            $this->orderService->createOrder($data);
         } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }
         return $response->withStatus(200);
     }
 
+    #[OA\Put(path: '/api/order/orders', tags: ['order'])]
+    #[OA\Response(response: 200, description: 'Updates an order')]
+    #[OA\Response(response: 400, description: 'Invalid data')]
     public function updateOrder(Request $request, Response $response, array $args): Response
     {
+        if (!$this->authService->checkRequest($request)) {
+            return $response->withStatus(401);
+        }
+
         $data = $request->getParsedBody();
         try {
-            $this->orderServiceBoundary->updateOrder($data['id'], $data);
+            $this->orderService->updateOrder($data['id'], $data);
         } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }
         return $response->withStatus(200);
     }
 
+    #[OA\Delete(path: '/api/order/orders', tags: ['order'])]
+    #[OA\Response(response: 200, description: 'Deletes an order')]
+    #[OA\Response(response: 400, description: 'Invalid data')]
     public function deleteOrder(Request $request, Response $response, array $args): Response
     {
+        if (!$this->authService->checkRequest($request)) {
+            return $response->withStatus(401);
+        }
+
         $data = $request->getParsedBody();
         try {
-            $this->orderServiceBoundary->deleteOrder($data['id']);
+            $this->orderService->deleteOrder($data['id']);
         } catch (\InvalidArgumentException $exception) {
             return $response->withStatus(400);
         }
