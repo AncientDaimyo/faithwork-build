@@ -4,17 +4,14 @@ use Slim\App;
 
 return function (App $app) {
     $app->get('/', function ($request, $response, $args) {
-        $response = $response->withStatus(302)->withHeader('Location', '/api/doc');
+        $response = $response->withStatus(302)->withHeader('Location', '/api/ui');
         return $response;
     });
 
 
 
     $app->group('/api', function ($app) {
-        $app->get('/health', function ($request, $response, $args) {
-            $response = $response->withStatus(200);
-            return $response;
-        });
+        $app->get('/health', \App\Shared\Infrastructure\Controller\ServiceController::class . ':health');
 
         $app->get('/doc', function ($request, $response, $args) {
             $openapi = \OpenApi\Generator::scan([__DIR__ . '/../src']);
@@ -68,6 +65,12 @@ return function (App $app) {
 
         $app->get('/{path}', function ($request, $response, $args) {
             $path = explode('.', (string)$request->getAttribute('path'));
+            
+            if (count($path) != 2) {
+                $response = $response->withStatus(404);
+                return $response;
+            }
+
             switch ($path[1]) {
                 case 'css':
                     $response = $response->withHeader('Content-type', 'text/css');

@@ -19,7 +19,7 @@ class ProductController extends Controller
         $this->productServiceBoundary = $productServiceBoundary;
     }
 
-    #[OA\Get(path: '/api/product/products')]
+    #[OA\Get(path: '/api/product/products', tags: ['product'])]
     #[OA\Response(response: 200, description: 'Returns a list of products')]
     public function getProducts()
     {
@@ -30,7 +30,7 @@ class ProductController extends Controller
         return $response;
     }
 
-    #[OA\Get(path: '/api/product/products/{id}')]
+    #[OA\Get(path: '/api/product/products/{id}', tags: ['product'])]
     #[OA\Response(response: 200, description: 'Returns a product')]
     public function getProduct(Request $request)
     {

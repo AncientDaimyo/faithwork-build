@@ -7,6 +7,7 @@ use App\Shared\Infrastructure\Controller\Controller;
 use Psr\Container\ContainerInterface;
 use Slim\Psr7\Response;
 use Slim\Psr7\Request;
+use OpenApi\Attributes as OA;
 
 class AuthController extends Controller
 {
@@ -20,6 +21,18 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
+    #[OA\Post(path: '/api/auth/login', tags: ['auth'])]
+    #[OA\RequestBody(
+        content: [
+            new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: 'email', type: 'string'),
+                    new OA\Property(property: 'password', type: 'string'),
+                ]
+            ),
+        ]
+    )]
+    #[OA\Response(response: 200, description: 'Returns a tokens')]
     public function login(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
@@ -34,6 +47,18 @@ class AuthController extends Controller
         return $response->withStatus(200);
     }
 
+    #[OA\Post(path: '/api/auth/register', tags: ['auth'])]
+    #[OA\RequestBody(
+        content: [
+            new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: 'email', type: 'string'),
+                    new OA\Property(property: 'password', type: 'string'),
+                ]
+            ),
+        ]
+    )]
+    #[OA\Response(response: 200, description: 'Creates a new user')]
     public function register(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
@@ -45,6 +70,17 @@ class AuthController extends Controller
         return $response->withStatus(200);
     }
 
+    #[OA\Post(path: '/api/auth/refresh', tags: ['auth'])]
+    #[OA\RequestBody(
+        content: [
+            new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: 'Refresh-Token', type: 'string'),
+                ]
+            ),
+        ]
+    )]
+    #[OA\Response(response: 200, description: 'Returns a tokens')]
     public function refresh(Request $request, Response $response): Response
     {
         $refreshToken = $request->getHeader('Refresh-Token')[0];    
@@ -65,6 +101,8 @@ class AuthController extends Controller
         return $response->withStatus(200);
     }
 
+    #[OA\Post(path: '/api/auth/logout', tags: ['auth'])]
+    #[OA\Response(response: 200, description: 'Deletes tokens')]
     public function logout(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
