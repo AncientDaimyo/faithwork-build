@@ -31,3 +31,12 @@ services:
     ports:
       - "4000:4000"
     restart: always
+  client:
+    build:
+      context: .
+      dockerfile: ./host/client/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: always
