@@ -6,7 +6,6 @@ use App\Product\Application\Boundary\ProductServiceBoundary;
 use App\Shared\Infrastructure\Controller\Controller;
 use Psr\Container\ContainerInterface;
 use Slim\Psr7\Response;
-use OpenApi\Attributes as OA;
 use Slim\Psr7\Request;
 
 class ProductController extends Controller
@@ -19,8 +18,6 @@ class ProductController extends Controller
         $this->productServiceBoundary = $productServiceBoundary;
     }
 
-    #[OA\Get(path: '/api/product/products', tags: ['product'])]
-    #[OA\Response(response: 200, description: 'Returns a list of products')]
     public function getProducts()
     {
         $products = $this->productServiceBoundary->getProducts();
@@ -30,8 +27,6 @@ class ProductController extends Controller
         return $response;
     }
 
-    #[OA\Get(path: '/api/product/products/{id}', tags: ['product'])]
-    #[OA\Response(response: 200, description: 'Returns a product')]
     public function getProduct(Request $request)
     {
         $id = $request->getAttribute('id');
