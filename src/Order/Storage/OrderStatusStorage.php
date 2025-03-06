@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Order\Domain\Storage;
+namespace App\Order\Storage;
 
 class OrderStatusStorage
 {

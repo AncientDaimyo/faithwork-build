@@ -1,9 +1,9 @@
 <?php
 
-use App\Auth\Application\Boundary\AuthServiceBoundary;
 use App\Auth\Application\Service\AuthService;
-use App\Order\Application\Boundary\OrderServiceBoundary;
-use App\Order\Application\Service\OrderService;
+use App\Auth\Interface\AuthServiceInterface;
+use App\Order\Service\OrderService;
+use App\Order\Interface\OrderServiceInterface;
 use App\Product\Application\Boundary\ProductServiceBoundary;
 use App\Product\Application\Service\ProductService;
 use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
@@ -85,11 +85,11 @@ return [
         return $container->get(ProductService::class);
     },
 
-    AuthServiceBoundary::class => function (ContainerInterface $container) {
+    AuthServiceInterface::class => function (ContainerInterface $container) {
         return $container->get(AuthService::class);
     },
 
-    OrderServiceBoundary::class => function (ContainerInterface $container) {
+    OrderServiceInterface::class => function (ContainerInterface $container) {
         return $container->get(OrderService::class);
     },
 ];

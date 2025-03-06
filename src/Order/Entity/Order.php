@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Order\Domain\Entity;
+namespace App\Order\Entity;
 
 use App\Shared\Domain\Entity\Entity;
-use App\Order\Domain\Storage\OrderStatusStorage;
-use App\Order\Domain\Storage\PaymentStatusStorage;
+use App\Order\Storage\OrderStatusStorage;
+use App\Order\Storage\PaymentStatusStorage;
+use App\Order\DTO\OrderDto;
+use App\Order\DTO\OrderItemDto;
+use App\Shared\Domain\Type\Decimal;
 
 class Order extends Entity
 {
@@ -12,7 +15,8 @@ class Order extends Entity
     protected ?int $customerId;
     protected ?int $orderStatus;
     protected ?int $paymentStatus;
-    
+    protected Decimal $totalPrice;
+
     protected array $items;
 
     public function __construct()
@@ -23,6 +27,20 @@ class Order extends Entity
         $this->paymentStatus = PaymentStatusStorage::UNPAID;
     }
 
+    public static function fromDto(OrderDto $orderDto): Order
+    {
+        $order = new Order();
+        $order->setCustomerId($orderDto->customerId);
+        $order->setOrderStatus($orderDto->orderStatus);
+        $order->setPaymentStatus($orderDto->paymentStatus);
+        foreach ($orderDto->items as $item) {
+            $order->setItemFromDto($item, $orderDto->id);
+        }
+        $order->setId($orderDto->id);
+        $order->setTotalPrice($orderDto->totalPrice);
+        return $order;
+    }
+
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -31,6 +49,11 @@ class Order extends Entity
     public function setItems(array $items): void
     {
         $this->items = $items;
+    }
+
+    protected function setItemFromDto(OrderItemDto $orderItem): void
+    {
+        $this->items[] = $orderItem;
     }
 
     public function setCustomerId(?int $customerId): void
@@ -69,11 +92,16 @@ class Order extends Entity
         return $items;
     }
 
-    public function calculateTotal(): float
+    public function setTotalPrice(Decimal $totalPrice): void
     {
-        $total = 0.0;
+        $this->totalPrice = $totalPrice;
+    }
+
+    public function calculateTotal(): Decimal
+    {
+        $total = new Decimal('0.00');
         foreach ($this->items as $item) {
-            $total += $item->price * $item->quantity;
+            $total = $total->add($item->calculateTotal());
         }
         return $total;
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Order\Infrastructure\Repository;
+namespace App\Order\Repository;
 
-use App\Order\Domain\Entity\Order;
+use App\Order\Entity\Order;
 use App\Shared\Infrastructure\Repository\Repository;
 
 class OrderRepository extends Repository
@@ -13,11 +13,25 @@ class OrderRepository extends Repository
     public function getById(int $id): array
     {
         $qb = $this->connection->createQueryBuilder()
-        ->select('*')
-        ->from($this->table, 'o')
-        ->leftJoin('o', $this->orderItemTable, 'oi', 'oi.order_id = o.id')
-        ->where('o.id = :id')
-        ->setParameter('id', $id);
+            ->select('*')
+            ->from($this->table, 'o')
+            ->leftJoin('o', $this->orderItemTable, 'oi', 'oi.order_id = o.id')
+            ->where('o.id = :id')
+            ->setParameter('id', $id);
+
+        return $qb->fetchAllAssociative();
+    }
+
+    public function getByIdForCustomer(int $id, int $customerId): array
+    {
+        $qb = $this->connection->createQueryBuilder()
+            ->select('*')
+            ->from($this->table, 'o')
+            ->leftJoin('o', $this->orderItemTable, 'oi', 'oi.order_id = o.id')
+            ->where('o.id = :id')
+            ->andWhere('o.customer_id = :customerId')
+            ->setParameter('id', $id)
+            ->setParameter('customerId', $customerId);
 
         return $qb->fetchAllAssociative();
     }
@@ -25,10 +39,11 @@ class OrderRepository extends Repository
     public function getByCustomerId(int $customerId): array
     {
         $qb = $this->connection->createQueryBuilder()
-        ->select('*')
-        ->from($this->table)
-        ->where('customer_id = :customerId')
-        ->setParameter('customerId', $customerId);
+            ->select('*')
+            ->from($this->table)
+            ->leftJoin($this->orderItemTable, 'oi', 'oi.order_id = o.id')
+            ->where('customer_id = :customerId')
+            ->setParameter('customerId', $customerId);
 
         return $qb->fetchAllAssociative();
     }
@@ -62,21 +77,21 @@ SQL;
         return $orderId;
     }
 
-    public function updateOrder(Order $order): void
+    public function updateOrder(Order $order): int
     {
         $this->connection->createQueryBuilder()
-        ->update($this->table)
-        ->where('id = :id')
-        ->setParameter('id', $order->id)
-        ->set('customer_id', $order->customerId)
-        ->set('total', $order->calculateTotal())
-        ->executeQuery();
+            ->update($this->table)
+            ->where('id = :id')
+            ->setParameter('id', $order->id)
+            ->set('customer_id', $order->customerId)
+            ->set('total', $order->calculateTotal())
+            ->executeQuery();
 
         $this->connection->createQueryBuilder()
-        ->delete($this->orderItemTable)
-        ->where('order_id = :orderId')
-        ->setParameter('orderId', $order->id)
-        ->executeQuery();
+            ->delete($this->orderItemTable)
+            ->where('order_id = :orderId')
+            ->setParameter('orderId', $order->id)
+            ->executeQuery();
 
         $sql = <<<SQL
 INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (:order_id, :product_id, :quantity, :price)
@@ -90,20 +105,22 @@ SQL;
                 'price' => $item['price'],
             ]);
         }
+
+        return $order->id;
     }
 
     public function deleteOrder(int $orderId): void
     {
         $this->connection->createQueryBuilder()
-        ->delete($this->table)
-        ->where('id = :id')
-        ->setParameter('id', $orderId)
-        ->executeQuery();
+            ->delete($this->table)
+            ->where('id = :id')
+            ->setParameter('id', $orderId)
+            ->executeQuery();
 
         $this->connection->createQueryBuilder()
-        ->delete($this->orderItemTable)
-        ->where('order_id = :orderId')
-        ->setParameter('orderId', $orderId)
-        ->executeQuery();
+            ->delete($this->orderItemTable)
+            ->where('order_id = :orderId')
+            ->setParameter('orderId', $orderId)
+            ->executeQuery();
     }
 }
