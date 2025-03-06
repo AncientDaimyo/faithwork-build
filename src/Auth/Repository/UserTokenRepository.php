@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Auth\Infrastructure\Repository;
+namespace App\Auth\Repository;
 
+use App\Auth\Entity\Token;
 use App\Shared\Infrastructure\Repository\Repository;
 
 class UserTokenRepository extends Repository
@@ -29,7 +30,7 @@ class UserTokenRepository extends Repository
             ->fetchAllAssociative();
     }
 
-    public function saveToken(int $userId, string $authToken, string $refreshToken = null)
+    public function saveToken(int $userId, Token $token)
     {
         $sql = <<<SQL
 INSERT INTO user_tokens (user_id, auth_token, refresh_token) VALUES (:user_id, :auth_token, :refresh_token)
@@ -38,8 +39,8 @@ SQL;
 
         return $this->connection->executeStatement($sql, [
             'user_id' => $userId,
-            'auth_token' => $authToken,
-            'refresh_token' => $refreshToken,
+            'auth_token' => $token->authToken,
+            'refresh_token' => $token->refreshToken,
         ]);
     }
 
@@ -47,9 +48,9 @@ SQL;
     {
         return $this->connection->createQueryBuilder()
             ->select('user_id')
-            ->from($this->table, 'ut')
-            ->where('ut.auth_token = :token')
+            ->from($this->table)
+            ->where('auth_token = :token')
             ->setParameter('token', $token)
-            ->fetchAllAssociative();
+            ->fetchOne();
     }
 }

@@ -15,10 +15,6 @@ $container = $builder->build();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->addRoutingMiddleware();
-
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
 (require_once __DIR__ . '/../config/routes.php')($app);
 
 (require_once __DIR__ . '/../config/middleware.php')($app);

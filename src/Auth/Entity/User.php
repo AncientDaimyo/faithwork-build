@@ -2,7 +2,7 @@
 
 namespace App\Auth\Domain\Entity;
 
-use App\Auth\Domain\Entity\Token;
+use App\Auth\Entity\Token;
 
 class User
 {

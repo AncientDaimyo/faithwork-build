@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Domain\Entity;
+namespace App\Auth\Entity;
 
 use App\Shared\Domain\Entity\Entity;
 
@@ -29,4 +29,6 @@ class Token extends Entity
             'refresh_token' => $this->refreshToken,
         ];
     }
+
+
 }

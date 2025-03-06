@@ -14,10 +14,9 @@ return function (App $app) {
         $app->get('/health', \App\Shared\Infrastructure\Controller\ServiceController::class . ':health');
 
         $app->get('/doc', function ($request, $response, $args) {
-            $openapi = \OpenApi\Generator::scan([__DIR__ . '/../src']);
-
+            $schema = file_get_contents(__DIR__ . '/../public/swagger.json');
             $response = $response->withHeader('Content-type', 'application/json');
-            $response->getBody()->write($openapi->toJson());
+            $response->getBody()->write($schema);
             return $response;
         });
 
