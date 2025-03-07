@@ -5,11 +5,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/products": {
+        "/api/product/products": {
             "get": {
                 "summary": "Получить список всех продуктов",
                 "operationId": "getProducts",
-                "tags": ["Product"],
+                "tags": [
+                    "Product"
+                ],
                 "responses": {
                     "200": {
                         "description": "Список продуктов",
@@ -27,11 +29,13 @@
                 }
             }
         },
-        "/products/{id}": {
+        "/api/product/products/{id}": {
             "get": {
                 "summary": "Получить продукт по ID",
                 "operationId": "getProduct",
-                "tags": ["Product"],
+                "tags": [
+                    "Product"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -56,6 +60,40 @@
                     },
                     "404": {
                         "description": "Продукт не найден"
+                    }
+                }
+            }
+        },
+        "/api/admin/migrations/up": {
+            "get": {
+                "summary": "Выполнить миграции вверх",
+                "operationId": "upMigrations",
+                "tags": [
+                    "Admin"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Миграции успешно выполнены"
+                    },
+                    "500": {
+                        "description": "Ошибка при выполнении миграций"
+                    }
+                }
+            }
+        },
+        "/api/admin/migrations/down": {
+            "get": {
+                "summary": "Выполнить миграции вниз",
+                "operationId": "downMigrations",
+                "tags": [
+                    "Admin"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Миграции успешно откачены"
+                    },
+                    "500": {
+                        "description": "Ошибка при откате миграций"
                     }
                 }
             }
