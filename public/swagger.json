@@ -1,7 +1,94 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.0",
     "info": {
         "title": "Faithwork API",
         "version": "1.0.0"
+    },
+    "paths": {
+        "/products": {
+            "get": {
+                "summary": "Получить список всех продуктов",
+                "operationId": "getProducts",
+                "tags": ["Product"],
+                "responses": {
+                    "200": {
+                        "description": "Список продуктов",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "summary": "Получить продукт по ID",
+                "operationId": "getProduct",
+                "tags": ["Product"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID продукта",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Продукт найден",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Продукт не найден"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID продукта"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Название продукта"
+                    },
+                    "price": {
+                        "type": "string",
+                        "description": "Цена продукта"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Описание продукта"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "price"
+                ]
+            }
+        }
     }
 }

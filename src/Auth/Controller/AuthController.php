@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Infrastructure\Controller;
+namespace App\Auth\Controller;
 
 use App\Shared\Infrastructure\Controller\Controller;
 use App\Auth\Interface\AuthServiceInterface;
