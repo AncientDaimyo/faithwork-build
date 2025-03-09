@@ -1,6 +1,6 @@
 <?php
 
-use App\Auth\Application\Service\AuthService;
+use App\Auth\Service\AuthService;
 use App\Auth\Interface\AuthServiceInterface;
 use App\Order\Service\OrderService;
 use App\Order\Interface\OrderServiceInterface;
