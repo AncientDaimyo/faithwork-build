@@ -95,7 +95,7 @@ class AuthController extends Controller
         $activationCode = $request->getAttribute('activationCode');
 
         if (empty($activationCode)) {
-            return $response->withStatus(400);
+            return $response->withStatus(404);
         }
 
         $token = $this->authService->activateRegistration($activationCode);
