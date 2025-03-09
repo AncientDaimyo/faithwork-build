@@ -60,7 +60,7 @@ class AuthController extends Controller
 
     public function refresh(Request $request, Response $response): Response
     {
-        $refreshToken = $request->getHeader('Refresh-Token')[0];
+        $refreshToken = $request->getParsedBody()['refreshToken'] ?? null;
 
         if (empty($refreshToken)) {
             return $response->withStatus(400);
