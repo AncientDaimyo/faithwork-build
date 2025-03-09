@@ -3,6 +3,7 @@
 namespace App\Auth\Repository;
 
 use App\Shared\Infrastructure\Repository\Repository;
+use App\Auth\Storage\RoleStorage;
 
 class UserRepository extends Repository
 {
@@ -30,14 +31,16 @@ class UserRepository extends Repository
 
     public function createUser(string $email, string $passwordHash): int
     {
-        $this->connection->createQueryBuilder()
-            ->insert($this->table)
-            ->values([
-                'email' => $email,
-                'password' => $passwordHash,
-            ])
-            ->executeQuery()
-            ->rowCount();
+        $query = <<<SQL
+INSERT INTO {$this->table} (email, password, role, activated) VALUES (:email, :password, :role, :activated)
+SQL;
+
+        $this->connection->executeQuery($query, [
+            'email' => $email,
+            'password' => $passwordHash,
+            'role' => RoleStorage::CUSTOMER,
+            'activated' => 0,
+        ]);
 
         return $this->connection->lastInsertId();
     }
