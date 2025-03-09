@@ -102,6 +102,10 @@ class AuthService implements AuthServiceInterface
             return null;
         }
 
+        if (!$this->userService->isUserActivated($userId)) {
+            return null;
+        }
+
         $user = $this->userService->getUserById($userId);
 
         if (empty($user)) {
