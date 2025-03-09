@@ -19,17 +19,6 @@ class UserTokenRepository extends Repository
         return $this->connection->executeStatement('DELETE FROM ' . $this->table . ' WHERE user_id = :user_id', ['user_id' => $userId]);
     }
 
-    public function getByActivationCode(string $activationCode)
-    {
-        return $this->connection->createQueryBuilder()
-            ->select('*')
-            ->from($this->table, 'ut')
-            ->leftJoin('ut', 'users', 'u', 'u.id = ut.user_id')
-            ->where('u.activation_code = :activation_code')
-            ->setParameter('activation_code', $activationCode)
-            ->fetchAllAssociative();
-    }
-
     public function saveToken(int $userId, Token $token)
     {
         $sql = <<<SQL

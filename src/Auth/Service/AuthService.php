@@ -128,25 +128,27 @@ class AuthService implements AuthServiceInterface
 
     public function activateRegistration(string $activationCode): ?Token
     {
-        $data = $this->userTokenRepository->getByActivationCode($activationCode);
+        $user = $this->userService->getByActivationCode($activationCode);
 
-        if (empty($data) || empty($data['user_id']) || empty($data['auth_token']) || empty($data['refresh_token'])) {
+        if (empty($user)) {
             return null;
         }
 
-        if ($this->userService->isUserActivated((int)$data['user_id'])) {
+        if ($this->userService->isUserActivated($user->id)) {
             return null;
         }
 
-        if (!$this->userService->activateUser($activationCode, (int)$data['user_id'])) {
+        if (!$this->userService->activateUser($activationCode, $user->id)) {
             return null;
         };
 
-        return new Token(
-            (int)$data['user_id'],
-            (string)$data['auth_token'],
-            (string)$data['refresh_token']
-        );
+        $token = $this->tokenService->createToken($user->id, [
+            'email' => $user->email,
+        ]);
+
+        $this->userTokenRepository->saveToken($user->id, $token);
+
+        return $token;
     }
 
     protected function generateActivationCode(): string

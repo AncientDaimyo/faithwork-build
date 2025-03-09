@@ -4,6 +4,7 @@ namespace App\Auth\Repository;
 
 use App\Shared\Infrastructure\Repository\Repository;
 use App\Auth\Storage\RoleStorage;
+use Doctrine\DBAL\Types\Types;
 
 class UserRepository extends Repository
 {
@@ -19,14 +20,14 @@ class UserRepository extends Repository
             ->fetchAssociative();
     }
 
-    public function getByActivationCode(string $activationCode): array
+    public function getByActivationCode(string $activationCode): array|false
     {
         return $this->connection->createQueryBuilder()
             ->select('*')
             ->from($this->table)
             ->where('activation_code = :activation_code')
-            ->setParameter('activation_code', $activationCode)
-            ->fetchAllAssociative();
+            ->setParameter('activation_code', $activationCode, Types::STRING)
+            ->fetchAssociative();
     }
 
     public function createUser(string $email, string $passwordHash): int

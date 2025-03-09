@@ -59,6 +59,15 @@ class UserService
         );
     }
 
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Check if user with given email already exists in the database
+     *
+     * @param string $email
+     *
+     * @return bool
+     */
+    /******  c8a9bd41-b76e-426a-929e-62fa538230f1  *******/
     public function userExist(string $email): bool
     {
         $userData = $this->userRepository->getUserByEmail($email);
@@ -88,5 +97,20 @@ class UserService
     public function isUserActivated(int $userId): bool
     {
         return $this->userRepository->getById($userId)['activated'];
+    }
+
+    public function getByActivationCode(string $activationCode): ?User
+    {
+        $userData = $this->userRepository->getByActivationCode($activationCode);
+
+        if (!$userData || empty($userData['id']) || empty($userData['email']) || empty($userData['password'])) {
+            return null;
+        }
+
+        return new User(
+            $userData['id'],
+            $userData['email'],
+            $userData['password']
+        );
     }
 }
