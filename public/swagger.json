@@ -405,7 +405,7 @@
             "RefreshRequest": {
                 "type": "object",
                 "properties": {
-                    "refresh_token": {"type": "string"}
+                    "refreshToken": {"type": "string"}
                 },
                 "required": ["refreshToken"]
             }
