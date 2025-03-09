@@ -65,7 +65,7 @@ return function (App $app) {
             $app->get('/orders', OrderController::class . ':getOrders');
             $app->get('/orders/{id}', OrderController::class . ':getOrder');
             $app->post('/orders', OrderController::class . ':createOrder');
-            $app->put('/orders/{id}', OrderController::class . ':updateOrder');
+            $app->put('/orders', OrderController::class . ':updateOrder');
             $app->delete('/orders/{id}', OrderController::class . ':deleteOrder');
         });
 

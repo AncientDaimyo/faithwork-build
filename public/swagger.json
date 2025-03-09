@@ -14,7 +14,9 @@
     "paths": {
         "/api/health": {
             "get": {
-                "tags": ["HealthCheck"],
+                "tags": [
+                    "HealthCheck"
+                ],
                 "summary": "Проверка работоспособности",
                 "responses": {
                     "200": {
@@ -25,27 +27,41 @@
         },
         "/api/admin/migrations/up": {
             "get": {
-                "tags": ["Admin"],
+                "tags": [
+                    "Admin"
+                ],
                 "summary": "Выполнить миграции вверх",
                 "responses": {
-                    "204": {"description": "Миграции успешно выполнены"},
-                    "500": {"description": "Ошибка выполнения миграций"}
+                    "204": {
+                        "description": "Миграции успешно выполнены"
+                    },
+                    "500": {
+                        "description": "Ошибка выполнения миграций"
+                    }
                 }
             }
         },
         "/api/admin/migrations/down": {
             "get": {
-                "tags": ["Admin"],
+                "tags": [
+                    "Admin"
+                ],
                 "summary": "Откатить миграции",
                 "responses": {
-                    "204": {"description": "Миграции успешно откачены"},
-                    "500": {"description": "Ошибка отката миграций"}
+                    "204": {
+                        "description": "Миграции успешно откачены"
+                    },
+                    "500": {
+                        "description": "Ошибка отката миграций"
+                    }
                 }
             }
         },
         "/api/product/products": {
             "get": {
-                "tags": ["Products"],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Получить все продукты",
                 "responses": {
                     "200": {
@@ -54,7 +70,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": {"$ref": "#/components/schemas/Product"}
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
                                 }
                             }
                         }
@@ -64,93 +82,139 @@
         },
         "/api/product/products/{id}": {
             "get": {
-                "tags": ["Products"],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Получить продукт по ID",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Данные продукта",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/Product"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
                             }
                         }
                     },
-                    "404": {"description": "Продукт не найден"}
+                    "404": {
+                        "description": "Продукт не найден"
+                    }
                 }
             }
         },
         "/api/customer/account/{id}": {
             "get": {
-                "tags": ["Customer"],
+                "tags": [
+                    "Customer"
+                ],
                 "summary": "Получить данные аккаунта",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Данные пользователя",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/Customer"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
                             }
                         }
                     },
-                    "404": {"description": "Пользователь не найден"}
+                    "404": {
+                        "description": "Пользователь не найден"
+                    }
                 }
             },
             "put": {
-                "tags": ["Customer"],
+                "tags": [
+                    "Customer"
+                ],
                 "summary": "Обновить данные аккаунта",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {"$ref": "#/components/schemas/CustomerUpdate"}
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerUpdate"
+                            }
                         }
                     }
                 },
                 "responses": {
-                    "200": {"description": "Данные успешно обновлены"},
-                    "400": {"description": "Невалидные данные"}
+                    "200": {
+                        "description": "Данные успешно обновлены"
+                    },
+                    "400": {
+                        "description": "Невалидные данные"
+                    }
                 }
             },
             "delete": {
-                "tags": ["Customer"],
+                "tags": [
+                    "Customer"
+                ],
                 "summary": "Удалить аккаунт",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
-                    "204": {"description": "Аккаунт удален"},
-                    "404": {"description": "Аккаунт не найден"}
+                    "204": {
+                        "description": "Аккаунт удален"
+                    },
+                    "404": {
+                        "description": "Аккаунт не найден"
+                    }
                 }
             }
         },
         "/api/auth/login": {
             "post": {
-                "tags": ["Auth"],
+                "tags": [
+                    "Auth"
+                ],
                 "summary": "Аутентификация пользователя",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {"$ref": "#/components/schemas/LoginRequest"}
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
                         }
                     }
                 },
@@ -159,50 +223,76 @@
                         "description": "Успешная аутентификация",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/AuthResponse"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
                             }
                         }
                     },
-                    "401": {"description": "Неверные учетные данные"}
+                    "401": {
+                        "description": "Неверные учетные данные"
+                    }
                 }
             }
         },
         "/api/auth/register": {
             "post": {
-                "tags": ["Auth"],
+                "tags": [
+                    "Auth"
+                ],
                 "summary": "Регистрация нового пользователя",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {"$ref": "#/components/schemas/RegistrationRequest"}
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationRequest"
+                            }
                         }
                     }
                 },
                 "responses": {
-                    "201": {"description": "Пользователь создан"},
-                    "400": {"description": "Невалидные данные"}
+                    "201": {
+                        "description": "Пользователь создан"
+                    },
+                    "400": {
+                        "description": "Невалидные данные"
+                    }
                 }
             }
         },
         "/api/auth/logout": {
             "post": {
-                "tags": ["Auth"],
+                "tags": [
+                    "Auth"
+                ],
                 "summary": "Выход из аккаунта",
-                "security": [{"BearerAuth": []}],
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "responses": {
-                    "204": {"description": "Успешный выход"},
-                    "401": {"description": "Токен не предоставлен или неверный"}
+                    "204": {
+                        "description": "Успешный выход"
+                    },
+                    "401": {
+                        "description": "Токен не предоставлен или неверный"
+                    }
                 }
             }
         },
         "/api/auth/refresh": {
             "post": {
-                "tags": ["Auth"],
+                "tags": [
+                    "Auth"
+                ],
                 "summary": "Обновление токена",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {"$ref": "#/components/schemas/RefreshRequest"}
+                            "schema": {
+                                "$ref": "#/components/schemas/RefreshRequest"
+                            }
                         }
                     }
                 },
@@ -211,41 +301,62 @@
                         "description": "Успешное обновление",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/AuthResponse"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
                             }
                         }
                     },
-                    "400": {"description": "Неверный refreshToken"}
+                    "400": {
+                        "description": "Неверный refreshToken"
+                    }
                 }
             }
         },
         "/api/auth/activate/{code}": {
             "get": {
-                "tags": ["Auth"],
+                "tags": [
+                    "Auth"
+                ],
                 "summary": "Активация аккаунта",
-                "parameters": [{
-                    "name": "code",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "string"}
-                }],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Аккаунт активирован",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/AuthResponse"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
                             }
                         }
                     },
-                    "400": {"description": "Невалидный код активации"}
+                    "400": {
+                        "description": "Невалидный код активации"
+                    }
                 }
             }
         },
         "/api/order/orders": {
             "get": {
-                "tags": ["Orders"],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Получить список заказов",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Список заказов",
@@ -253,7 +364,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": {"$ref": "#/components/schemas/Order"}
+                                    "items": {
+                                        "$ref": "#/components/schemas/Order"
+                                    }
                                 }
                             }
                         }
@@ -261,77 +374,139 @@
                 }
             },
             "post": {
-                "tags": ["Orders"],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Создать новый заказ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {"$ref": "#/components/schemas/OrderCreate"}
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderCreate"
+                            }
                         }
                     }
                 },
                 "responses": {
-                    "201": {"description": "Заказ успешно создан"},
-                    "400": {"description": "Невалидные данные заказа"}
+                    "201": {
+                        "description": "Заказ успешно создан"
+                    },
+                    "400": {
+                        "description": "Невалидные данные заказа"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Обновить заказ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderUpdate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Заказ обновлен"
+                    },
+                    "400": {
+                        "description": "Невалидные данные"
+                    },
+                    "404": {
+                        "description": "Заказ не найден"
+                    }
                 }
             }
         },
         "/api/order/orders/{id}": {
             "get": {
-                "tags": ["Orders"],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Получить заказ по ID",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Данные заказа",
                         "content": {
                             "application/json": {
-                                "schema": {"$ref": "#/components/schemas/Order"}
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
                             }
                         }
                     },
-                    "404": {"description": "Заказ не найден"}
-                }
-            },
-            "put": {
-                "tags": ["Orders"],
-                "summary": "Обновить заказ",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {"$ref": "#/components/schemas/OrderUpdate"}
-                        }
+                    "404": {
+                        "description": "Заказ не найден"
                     }
-                },
-                "responses": {
-                    "200": {"description": "Заказ обновлен"},
-                    "400": {"description": "Невалидные данные"},
-                    "404": {"description": "Заказ не найден"}
                 }
             },
             "delete": {
-                "tags": ["Orders"],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Удалить заказ",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "schema": {"type": "integer"}
-                }],
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
-                    "204": {"description": "Заказ удален"},
-                    "404": {"description": "Заказ не найден"}
+                    "204": {
+                        "description": "Заказ удален"
+                    },
+                    "404": {
+                        "description": "Заказ не найден"
+                    }
                 }
             }
         }
@@ -348,88 +523,165 @@
             "Product": {
                 "type": "object",
                 "properties": {
-                    "id": {"type": "integer"},
-                    "name": {"type": "string"},
-                    "price": {"type": "number"},
-                    "description": {"type": "string"}
+                    "id": {
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "type": "integer"
+                    },
+                    "price": {
+                        "type": "string"
+                    },
+                    "sizeId": {
+                        "type": "integer"
+                    }
                 }
             },
             "Customer": {
                 "type": "object",
                 "properties": {
-                    "id": {"type": "integer"},
-                    "name": {"type": "string"},
-                    "email": {"type": "string", "format": "email"},
-                    "phone": {"type": "string"}
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "phone": {
+                        "type": "string"
+                    }
                 }
             },
             "CustomerUpdate": {
                 "type": "object",
                 "properties": {
-                    "name": {"type": "string"},
-                    "phone": {"type": "string"}
+                    "name": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    }
                 }
             },
             "LoginRequest": {
                 "type": "object",
                 "properties": {
-                    "email": {"type": "string", "format": "email"},
-                    "password": {"type": "string"}
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
                 },
-                "required": ["email", "password"]
+                "required": [
+                    "email",
+                    "password"
+                ]
             },
             "AuthResponse": {
                 "type": "object",
                 "properties": {
-                    "token": {"type": "string"},
-                    "refreshToken": {"type": "string"}
+                    "token": {
+                        "type": "string"
+                    },
+                    "refreshToken": {
+                        "type": "string"
+                    }
                 }
             },
             "Order": {
                 "type": "object",
                 "properties": {
-                    "id": {"type": "integer"},
-                    "customerId": {"type": "integer"},
-                    "products": {
-                        "type": "array",
-                        "items": {"$ref": "#/components/schemas/Product"}
+                    "id": {
+                        "type": "integer"
                     },
-                    "status": {"type": "string"}
+                    "customerId": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "paymentStatus": {
+                        "type": "integer"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    },
+                    "totalPrice": {
+                        "type": "string"
+                    }
                 }
             },
             "OrderCreate": {
                 "type": "object",
                 "properties": {
-                    "customerId": {"type": "integer"},
-                    "products": {
+                    "items": {
                         "type": "array",
-                        "items": {"type": "integer"}
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
                     }
                 },
-                "required": ["customerId", "products"]
+                "required": [
+                    "items"
+                ]
             },
             "RegistrationRequest": {
                 "type": "object",
                 "properties": {
-                    "email": {"type": "string", "format": "email"},
-                    "password": {"type": "string"}
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
                 },
-                "required": ["email", "password"]
+                "required": [
+                    "email",
+                    "password"
+                ]
             },
             "OrderUpdate": {
                 "type": "object",
                 "properties": {
-                    "status": {"type": "string"},
-                    "customerId": {"type": "integer"}
-                },
-                "required": ["status"]
+                    "id": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "paymentStatus": {
+                        "type": "integer"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    },
+                    "totalPrice": {
+                        "type": "string"
+                    }
+                }
             },
             "RefreshRequest": {
                 "type": "object",
                 "properties": {
-                    "refreshToken": {"type": "string"}
+                    "refreshToken": {
+                        "type": "string"
+                    }
                 },
-                "required": ["refreshToken"]
+                "required": [
+                    "refreshToken"
+                ]
             }
         }
     }
