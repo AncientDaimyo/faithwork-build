@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Auth\Application\Service;
+namespace App\Auth\Service;
 
-use App\Auth\Application\Provider\TokenService;
-use App\Auth\Domain\Entity\User;
+use App\Auth\Service\TokenService;
+use App\Auth\Entity\User;
 use App\Auth\Interface\AuthServiceInterface;
 use App\Auth\Entity\Token;
 use App\Auth\Repository\UserTokenRepository;

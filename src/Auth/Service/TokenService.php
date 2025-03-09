@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Application\Provider;
+namespace App\Auth\Service;
 
 use App\Auth\Entity\Token;
 use App\Auth\Storage\TokenTypeStorage;

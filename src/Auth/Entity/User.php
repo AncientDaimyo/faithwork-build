@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Domain\Entity;
+namespace App\Auth\Entity;
 
 use App\Auth\Entity\Token;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Auth\Application\Service;
+namespace App\Auth\Service;
 
-use App\Auth\Domain\Entity\User;
-use App\Auth\Infrastructure\Repository\UserRepository;
+use App\Auth\Entity\User;
+use App\Auth\Repository\UserRepository;
 
 class UserService
 {

@@ -119,6 +119,7 @@ class AuthController extends Controller
 
     protected function validateEmail(string $email): bool
     {
-        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+        // return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+        return true;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Auth\Interface;
 
-use App\Auth\Domain\Entity\User;
+use App\Auth\Entity\User;
 use App\Auth\Entity\Token;
 use Slim\Psr7\Request;
 
