@@ -407,7 +407,7 @@
                 "properties": {
                     "refresh_token": {"type": "string"}
                 },
-                "required": ["refresh_token"]
+                "required": ["refreshToken"]
             }
         }
     }
