@@ -142,8 +142,11 @@ class AuthService implements AuthServiceInterface
         if (empty($token)) {
             return null;
         }
-
-        $decoded = $this->tokenService->decode($token);
+        try {
+            $decoded = $this->tokenService->decode($token);
+        } catch (\Exception $e) {
+            return null;
+        }
 
         if (
             empty($decoded) ||
@@ -153,7 +156,13 @@ class AuthService implements AuthServiceInterface
             return null;
         }
 
-        return $this->userService->getUserById($decoded->userId);
+        $userId = $this->userTokenRepository->getUserIdByToken($token);
+
+        if (empty($userId)) {
+            return null;
+        }
+
+        return $this->userService->getUserById($userId);
     }
 
     protected function extractToken(Request $request): ?string
