@@ -53,4 +53,14 @@ SQL;
             ->setParameter('token', $token)
             ->fetchOne();
     }
+
+    public function getUserIdByRefreshToken(string $token)
+    {
+        return $this->connection->createQueryBuilder()
+            ->select('user_id')
+            ->from($this->table)
+            ->where('refresh_token = :token')
+            ->setParameter('token', $token)
+            ->fetchOne();
+    }
 }

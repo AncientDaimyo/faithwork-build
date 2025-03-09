@@ -82,7 +82,11 @@ class AuthService implements AuthServiceInterface
 
     public function refresh(string $refreshToken): ?Token
     {
-        $decoded = $this->tokenService->decode($refreshToken);
+        try {
+            $decoded = $this->tokenService->decode($refreshToken);
+        } catch (\Exception $e) {
+            return null;
+        }
 
         if (
             empty($decoded) ||
@@ -92,7 +96,13 @@ class AuthService implements AuthServiceInterface
             return null;
         }
 
-        $user = $this->userService->getUserById($decoded->userId);
+        $userId = $this->userTokenRepository->getUserIdByRefreshToken($refreshToken);
+
+        if (empty($userId)) {
+            return null;
+        }
+
+        $user = $this->userService->getUserById($userId);
 
         if (empty($user)) {
             return null;
