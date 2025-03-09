@@ -57,7 +57,7 @@ class UserService
 
     public function createUser(string $email, string $passwordHash): int
     {
-        return $this->userRepository->insert(['email' => $email, 'password_hash' => $passwordHash]);
+        return $this->userRepository->createUser($email, $passwordHash);
     }
 
     public function saveActivationCode(int $userId, string $code): void

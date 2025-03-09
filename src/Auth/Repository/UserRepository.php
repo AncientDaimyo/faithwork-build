@@ -27,4 +27,18 @@ class UserRepository extends Repository
             ->setParameter('activation_code', $activationCode)
             ->fetchAllAssociative();
     }
+
+    public function createUser(string $email, string $passwordHash): int
+    {
+        $this->connection->createQueryBuilder()
+            ->insert($this->table)
+            ->values([
+                'email' => $email,
+                'password' => $passwordHash,
+            ])
+            ->executeQuery()
+            ->rowCount();
+
+        return $this->connection->lastInsertId();
+    }
 }
