@@ -219,6 +219,29 @@
                 }
             }
         },
+        "/api/auth/activate/{code}": {
+            "get": {
+                "tags": ["Auth"],
+                "summary": "Активация аккаунта",
+                "parameters": [{
+                    "name": "code",
+                    "in": "path",
+                    "required": true,
+                    "schema": {"type": "string"}
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Аккаунт активирован",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/AuthResponse"}
+                            }
+                        }
+                    },
+                    "400": {"description": "Невалидный код активации"}
+                }
+            }
+        },
         "/api/order/orders": {
             "get": {
                 "tags": ["Orders"],

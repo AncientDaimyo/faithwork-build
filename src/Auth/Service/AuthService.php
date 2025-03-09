@@ -40,7 +40,7 @@ class AuthService implements AuthServiceInterface
 
     public function login(string $email, string $password): ?Token
     {
-        $user = $this->userService->getUserByEmail($email);
+        $user = $this->userService->getActivatedUserByEmail($email);
 
         if (empty($user) || !password_verify($password, $user->passwordHash)) {
             return null;
@@ -122,16 +122,26 @@ class AuthService implements AuthServiceInterface
         $this->userTokenRepository->deleteTokensByUserId($userId);
     }
 
-    public function activateRegistration(string $activationCode): Token
+    public function activateRegistration(string $activationCode): ?Token
     {
-        // TODO rewrite activation
         $data = $this->userTokenRepository->getByActivationCode($activationCode);
-        $this->userService->activateUser($activationCode);
+
+        if (empty($data) || empty($data['user_id']) || empty($data['auth_token']) || empty($data['refresh_token'])) {
+            return null;
+        }
+
+        if ($this->userService->isUserActivated((int)$data['user_id'])) {
+            return null;
+        }
+
+        if (!$this->userService->activateUser($activationCode, (int)$data['user_id'])) {
+            return null;
+        };
+
         return new Token(
             (int)$data['user_id'],
             (string)$data['auth_token'],
-            (string)$data['refresh_token'],
-            (int)$data['kid']
+            (string)$data['refresh_token']
         );
     }
 

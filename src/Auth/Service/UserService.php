@@ -44,6 +44,21 @@ class UserService
         );
     }
 
+    public function getActivatedUserByEmail(string $email): ?User
+    {
+        $userData = $this->userRepository->getUserByEmail($email, true);
+
+        if (!$userData) {
+            return null;
+        }
+
+        return new User(
+            $userData['id'],
+            $userData['email'],
+            $userData['password']
+        );
+    }
+
     public function userExist(string $email): bool
     {
         $userData = $this->userRepository->getUserByEmail($email);
@@ -65,14 +80,13 @@ class UserService
         $this->userRepository->update(['id' => $userId, 'activation_code' => $code]);
     }
 
-    public function activateUser(string $activationCode): bool
+    public function activateUser(string $activationCode, int $userId): bool
     {
-        $userData = $this->userRepository->getByActivationCode($activationCode);
+        return $this->userRepository->update(['id' => $userId, 'activation_code' => null, 'activated' => true]);
+    }
 
-        if (!$userData) {
-            return false;
-        }
-
-        return $this->userRepository->update(['id' => $userData['id'], 'activation_code' => null, 'activated' => true]);
+    public function isUserActivated(int $userId): bool
+    {
+        return $this->userRepository->getById($userId)['activated'];
     }
 }

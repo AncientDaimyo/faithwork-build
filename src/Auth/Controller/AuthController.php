@@ -90,6 +90,24 @@ class AuthController extends Controller
         return $response->withStatus(200);
     }
 
+    public function activateRegistration(Request $request, Response $response): Response
+    {
+        $activationCode = $request->getAttribute('activationCode');
+
+        if (empty($activationCode)) {
+            return $response->withStatus(400);
+        }
+
+        $token = $this->authService->activateRegistration($activationCode);
+
+        if (empty($token)) {
+            return $response->withStatus(400);
+        }
+
+        $response->getBody()->write(json_encode($token));
+        return $response->withStatus(200);
+    }
+
     protected function extractLoginData(Request $request): array
     {
         $data = $request->getParsedBody();

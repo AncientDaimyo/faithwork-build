@@ -9,7 +9,7 @@ class UserRepository extends Repository
 {
     protected string $table = 'users';
 
-    public function getUserByEmail(string $email): array|false
+    public function getUserByEmail(string $email, bool $checkActivation = false): array|false
     {
         return $this->connection->createQueryBuilder()
             ->select('*')

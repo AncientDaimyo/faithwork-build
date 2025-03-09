@@ -58,6 +58,7 @@ return function (App $app) {
             $app->post('/register', AuthController::class . ':register');
             $app->post('/logout', AuthController::class . ':logout');
             $app->post('/refresh', AuthController::class . ':refresh');
+            $app->get('/activate/{activationCode}', AuthController::class . ':activateRegistration');
         });
 
         $app->group('/order', function ($app) {
