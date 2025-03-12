@@ -7,7 +7,6 @@ use App\Auth\Interface\AuthServiceInterface;
 use Psr\Container\ContainerInterface;
 use Slim\Psr7\Response;
 use Slim\Psr7\Request;
-use OpenApi\Attributes as OA;
 
 class AuthController extends Controller
 {

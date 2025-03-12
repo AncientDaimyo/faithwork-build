@@ -2,7 +2,6 @@
 
 namespace App\Shared\Infrastructure\Controller;
 
-use OpenApi\Attributes as OA;
 use Slim\Psr7\Response;
 
 class ServiceController extends Controller

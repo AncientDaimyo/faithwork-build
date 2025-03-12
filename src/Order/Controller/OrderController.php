@@ -168,7 +168,7 @@ class OrderController extends Controller
             $data['id'],
             $data['orderStatus'],
             $data['paymentStatus'],
-            $data['totalPrice']
+            new Decimal($data['totalPrice'])
         );
     }
 }
