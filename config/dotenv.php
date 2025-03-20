@@ -14,7 +14,8 @@ return function () {
             'DB_PORT',
             'DB_DRIVER',
             'JWT_SECRET_KEY',
-            'DOMAIN'
+            'DOMAIN',
+            'APP_ENV'
         ]
     );
 };

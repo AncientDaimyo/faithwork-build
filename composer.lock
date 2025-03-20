@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "236559b8050119ca8b5edae453d56e28",
+    "content-hash": "03502a45bcd8b19497f0fa6b18aed3b7",
     "packages": [
         {
             "name": "doctrine/dbal",
@@ -342,16 +342,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "2e1a362527783bcab6c316aad51bf36c5513ae44"
+                "reference": "f379c13663245f7aa4512a7869f62eb14095f23f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/2e1a362527783bcab6c316aad51bf36c5513ae44",
-                "reference": "2e1a362527783bcab6c316aad51bf36c5513ae44",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/f379c13663245f7aa4512a7869f62eb14095f23f",
+                "reference": "f379c13663245f7aa4512a7869f62eb14095f23f",
                 "shasum": ""
             },
             "require": {
@@ -399,7 +399,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2025-01-24T15:42:37+00:00"
+            "time": "2025-02-11T15:03:05+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -450,6 +450,54 @@
                 "source": "https://github.com/nikic/FastRoute/tree/master"
             },
             "time": "2018-02-13T20:26:39+00:00"
+        },
+        {
+            "name": "palanik/corsslim",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/palanik/CorsSlim.git",
+                "reference": "0f06ff5a9709ee1c831a25cda3028008d86a48eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/palanik/CorsSlim/zipball/0f06ff5a9709ee1c831a25cda3028008d86a48eb",
+                "reference": "0f06ff5a9709ee1c831a25cda3028008d86a48eb",
+                "shasum": ""
+            },
+            "require": {
+                "slim/slim": ">=2.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CorsSlim\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "palanik"
+                }
+            ],
+            "description": "Cross-origin resource sharing (CORS) middleware for PHP Slim.",
+            "homepage": "https://github.com/palanik/CorsSlim",
+            "keywords": [
+                "cors",
+                "corsslim",
+                "cross-origin",
+                "preflight",
+                "slim",
+                "slimphp"
+            ],
+            "support": {
+                "issues": "https://github.com/palanik/CorsSlim/issues",
+                "source": "https://github.com/palanik/CorsSlim/tree/v1.0.0"
+            },
+            "time": "2015-11-19T05:44:29+00:00"
         },
         {
             "name": "paragonie/sodium_compat",
@@ -599,16 +647,16 @@
         },
         {
             "name": "php-di/php-di",
-            "version": "7.0.8",
+            "version": "7.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "98ddc81f8f768a2ad39e4cbe737285eaeabe577a"
+                "reference": "d8480267f5cf239650debba704f3ecd15b638cde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/98ddc81f8f768a2ad39e4cbe737285eaeabe577a",
-                "reference": "98ddc81f8f768a2ad39e4cbe737285eaeabe577a",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/d8480267f5cf239650debba704f3ecd15b638cde",
+                "reference": "d8480267f5cf239650debba704f3ecd15b638cde",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +673,7 @@
                 "friendsofphp/proxy-manager-lts": "^1",
                 "mnapoli/phpunit-easymock": "^1.3",
                 "phpunit/phpunit": "^9.6",
-                "vimeo/psalm": "^4.6"
+                "vimeo/psalm": "^5|^6"
             },
             "suggest": {
                 "friendsofphp/proxy-manager-lts": "Install it if you want to use lazy injection (version ^1)"
@@ -656,7 +704,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-DI/PHP-DI/issues",
-                "source": "https://github.com/PHP-DI/PHP-DI/tree/7.0.8"
+                "source": "https://github.com/PHP-DI/PHP-DI/tree/7.0.9"
             },
             "funding": [
                 {
@@ -668,7 +716,62 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-28T21:02:46+00:00"
+            "time": "2025-02-28T12:46:35+00:00"
+        },
+        {
+            "name": "php-ds/php-ds",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-ds/polyfill.git",
+                "reference": "7b2c5f1843466d50769a0682ce6fa9ddaaa99cb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-ds/polyfill/zipball/7b2c5f1843466d50769a0682ce6fa9ddaaa99cb4",
+                "reference": "7b2c5f1843466d50769a0682ce6fa9ddaaa99cb4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.0"
+            },
+            "provide": {
+                "ext-ds": "1.5.0"
+            },
+            "require-dev": {
+                "php-ds/tests": "^1.5"
+            },
+            "suggest": {
+                "ext-ds": "to improve performance and reduce memory usage"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ds\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rudi Theunissen",
+                    "email": "rudolf.theunissen@gmail.com"
+                }
+            ],
+            "keywords": [
+                "data structures",
+                "ds",
+                "php",
+                "polyfill"
+            ],
+            "support": {
+                "issues": "https://github.com/php-ds/polyfill/issues",
+                "source": "https://github.com/php-ds/polyfill/tree/v1.5.0"
+            },
+            "time": "2023-12-19T16:52:21+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -1968,6 +2071,103 @@
             "time": "2024-07-20T21:52:34+00:00"
         },
         {
+            "name": "yoomoney/yookassa-sdk-php",
+            "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.yoomoney.ru/scm/sdk/yookassa-sdk-php.git",
+                "reference": "aeec752ffa007104dbae6cc95e0930d8a11b3224"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-php/archive?at=refs%2Ftags%2F3.8.0&format=zip"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.0",
+                "php-ds/php-ds": "^1.4",
+                "psr/log": "^2.0 || ^3.0",
+                "yoomoney/yookassa-sdk-validator": "^1.0"
+            },
+            "require-dev": {
+                "ext-xml": "*",
+                "friendsofphp/php-cs-fixer": "^3.15",
+                "mockery/mockery": "^1.5",
+                "php-parallel-lint/php-parallel-lint": "^1.3",
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.6",
+                "yoomoney/yookassa-fakerphp": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "YooKassa\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "YooMoney",
+                    "email": "cms@yoomoney.ru"
+                }
+            ],
+            "description": "This is a developer tool for integration with YooMoney.",
+            "homepage": "https://yookassa.ru/developers/api",
+            "keywords": [
+                "api",
+                "payments",
+                "sdk",
+                "yookassa",
+                "yoomoney"
+            ],
+            "time": "2025-01-17T13:04:18+00:00"
+        },
+        {
+            "name": "yoomoney/yookassa-sdk-validator",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.yoomoney.ru/scm/sdk/yookassa-sdk-validator-php.git",
+                "reference": "1068864a5179dcbb93b244bff43c0e6bc531b62a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-validator-php/archive?at=refs%2Ftags%2F1.0.3&format=zip"
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=8.0.0"
+            },
+            "require-dev": {
+                "ext-xml": "*",
+                "phpunit/phpunit": "^9.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "YooKassa\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "YooMoney",
+                    "email": "cms@yoomoney.ru"
+                }
+            ],
+            "description": "This is a developer tool for validating with YooMoney.",
+            "time": "2024-12-16T16:29:49+00:00"
+        },
+        {
             "name": "zircote/swagger-php",
             "version": "4.11.1",
             "source": {
@@ -2052,16 +2252,16 @@
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
-                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/024473a478be9df5fdaca2c793f2232fe788e414",
+                "reference": "024473a478be9df5fdaca2c793f2232fe788e414",
                 "shasum": ""
             },
             "require": {
@@ -2100,7 +2300,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.0"
             },
             "funding": [
                 {
@@ -2108,7 +2308,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-08T17:47:46+00:00"
+            "time": "2025-02-12T12:17:51+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2288,16 +2488,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.0.2",
+            "version": "12.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "69dde560510151f7d04315fac6c72016cc5d7bc8"
+                "reference": "d331a5ced3d9a2b917baa9841b2211e72f9e780d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/69dde560510151f7d04315fac6c72016cc5d7bc8",
-                "reference": "69dde560510151f7d04315fac6c72016cc5d7bc8",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d331a5ced3d9a2b917baa9841b2211e72f9e780d",
+                "reference": "d331a5ced3d9a2b917baa9841b2211e72f9e780d",
                 "shasum": ""
             },
             "require": {
@@ -2324,7 +2524,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "12.0.x-dev"
+                    "dev-main": "12.1.x-dev"
                 }
             },
             "autoload": {
@@ -2353,7 +2553,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.2"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.1.0"
             },
             "funding": [
                 {
@@ -2361,7 +2561,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-08T09:08:00+00:00"
+            "time": "2025-03-17T13:56:07+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2610,16 +2810,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.0.2",
+            "version": "12.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6301fe5c1f5f34192ffd650a87fe055677a32212"
+                "reference": "2845e49082ef7acc4a71a2ef71bbf32f31da22c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6301fe5c1f5f34192ffd650a87fe055677a32212",
-                "reference": "6301fe5c1f5f34192ffd650a87fe055677a32212",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2845e49082ef7acc4a71a2ef71bbf32f31da22c9",
+                "reference": "2845e49082ef7acc4a71a2ef71bbf32f31da22c9",
                 "shasum": ""
             },
             "require": {
@@ -2629,17 +2829,17 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.12.1",
+                "myclabs/deep-copy": "^1.13.0",
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.3",
-                "phpunit/php-code-coverage": "^12.0.2",
+                "phpunit/php-code-coverage": "^12.0.4",
                 "phpunit/php-file-iterator": "^6.0.0",
                 "phpunit/php-invoker": "^6.0.0",
                 "phpunit/php-text-template": "^5.0.0",
                 "phpunit/php-timer": "^8.0.0",
                 "sebastian/cli-parser": "^4.0.0",
-                "sebastian/comparator": "^7.0.0",
+                "sebastian/comparator": "^7.0.1",
                 "sebastian/diff": "^7.0.0",
                 "sebastian/environment": "^8.0.0",
                 "sebastian/exporter": "^7.0.0",
@@ -2687,7 +2887,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.2"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.7"
             },
             "funding": [
                 {
@@ -2703,7 +2903,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-08T09:18:47+00:00"
+            "time": "2025-03-07T07:32:22+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -2764,16 +2964,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "7.0.0",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "18eb5a4f854dbd1d6512c459b605de2edb5a0b47"
+                "reference": "b478f34614f934e0291598d0c08cbaba9644bee5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/18eb5a4f854dbd1d6512c459b605de2edb5a0b47",
-                "reference": "18eb5a4f854dbd1d6512c459b605de2edb5a0b47",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b478f34614f934e0291598d0c08cbaba9644bee5",
+                "reference": "b478f34614f934e0291598d0c08cbaba9644bee5",
                 "shasum": ""
             },
             "require": {
@@ -2832,7 +3032,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "security": "https://github.com/sebastianbergmann/comparator/security/policy",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/7.0.0"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/7.0.1"
             },
             "funding": [
                 {
@@ -2840,7 +3040,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-07T04:54:52+00:00"
+            "time": "2025-03-07T07:00:32+00:00"
         },
         {
             "name": "sebastian/complexity",
@@ -3623,10 +3823,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
