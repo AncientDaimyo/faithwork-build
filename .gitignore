@@ -4,3 +4,4 @@ tmp/
 *.uxf
 .vscode
 .qodo
+var/
