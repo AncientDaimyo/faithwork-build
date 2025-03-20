@@ -1,0 +1,7 @@
+vendor/
+tmp/
+.env
+*.uxf
+.vscode
+.qodo
+var/
