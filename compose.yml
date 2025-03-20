@@ -4,7 +4,8 @@ services:
       context: .
       dockerfile: ./host/api/Dockerfile
     volumes:
-      - ./faithwork-slim:/var/www/html
+      - ./api:/var/www/html
+      - ./.env:/var/www/html/.env
     ports:
       - "80"
     depends_on:
@@ -14,14 +15,14 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: faithwork
-      MYSQL_USER: borat
-      MYSQL_PASSWORD: borat
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./host/mysql_data:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "${DB_PORT}:3306"
   nginx-balancer:
     image: nginx:latest
     volumes:
@@ -31,12 +32,12 @@ services:
     ports:
       - "4000:4000"
     restart: always
-  client:
+  web:
     build:
       context: .
-      dockerfile: ./host/client/Dockerfile
+      dockerfile: ./host/web/Dockerfile
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - api
     restart: always
@@ -46,10 +47,10 @@ services:
     # Links the PHPMyAdmin service to the MySQL database service
       - db 
     ports:
-      - "8082:80" 
+      - "8080:80" 
     environment:
       PMA_HOST: db
       # Use MySQL root password for PHPMyAdmin
-      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     depends_on:
       - db
