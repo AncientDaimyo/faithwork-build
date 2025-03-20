@@ -1,0 +1,55 @@
+.swiper {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    max-height: var(--spacing-32xl);
+    /* Заменено 960px на 320px (20rem) */
+
+    .swiper-wrapper {
+        max-height: var(--spacing-32xl);
+        margin-top: -var(--spacing-xs);
+        /* -4px заменено на -0.25rem */
+
+        .swiper-slide {
+            max-height: var(--spacing-32xl);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .title {
+                display: flex;
+                position: absolute;
+                z-index: 2;
+
+                h1 {
+                    color: #a0afff;
+                    font-size: var(--spacing-10xl);
+                    /* 248px округлено до 256px (16rem) */
+                }
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                max-height: var(--spacing-30xl);
+                object-fit: cover;
+                filter: blur(var(--spacing-sm));
+                /* 5px заменено на 8px (0.5rem) */
+                z-index: 1;
+            }
+        }
+    }
+
+    .swiper-pagination {
+        .swiper-pagination-bullet {
+            background-color: rgb(0, 0, 255);
+            /* Изменено свойство на background-color */
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: rgb(0, 0, 255);
+    }
+}

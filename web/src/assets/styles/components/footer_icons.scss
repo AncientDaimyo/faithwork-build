@@ -1,0 +1,27 @@
+.footer-second-social {
+    height: var(--spacing-5xl); /* 90px округлено до 96px (6rem) */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Исправлено значение на 'wrap' */
+    justify-content: center;
+    align-items: center;
+  
+    a {
+      display: flex !important;
+      margin-left: calc(var(--spacing-md) / 2);
+      margin-right: calc(var(--spacing-md) / 2);
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+  
+      .footer-svg {
+        &.black {
+          filter: invert(100%);
+        }
+  
+        &:hover {
+          filter: invert(50%);
+        }
+      }
+    }
+  }

@@ -1,0 +1,10 @@
+html {
+    width: 100vw;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        display: none ;
+    }
+    body {
+        width: 100vw;
+    }
+}

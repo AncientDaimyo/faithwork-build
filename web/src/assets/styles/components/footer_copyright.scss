@@ -1,0 +1,21 @@
+.footer-copyright {
+    width: 100%;
+    height: var(--spacing-5xl);
+    /* 90px округлено до 96px (6rem) */
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    z-index: 50;
+
+    .footer-copyright-paragraf {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: var(--spacing-md);
+        /* 14px округлено до 16px (1rem) */
+        font-weight: 600;
+        line-height: normal;
+        padding-bottom: var(--spacing-lg);
+        /* 22px округлено до 24px (1.5rem) */
+    }
+}

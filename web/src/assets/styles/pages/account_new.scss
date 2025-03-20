@@ -1,0 +1,42 @@
+.account-full-wrapper {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - var(--logo-width) - 155px);
+    flex-flow: row nowrap;
+
+    .account-user-info {
+        display: flex;
+        width: 50%;
+        height: 100%;   
+        flex-flow: column nowrap;
+        align-items: start;
+        justify-content: center;
+        padding-left: var(--menu-spacing);
+    }
+
+    .account-inputs-changes {
+        display: flex;
+        width: 50%;
+        height: 100%;
+        flex-flow: row nowrap;
+        padding-right: var(--menu-spacing);
+
+        .account-settings {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: start;
+            justify-content: center;
+        }
+
+        .account-location{
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: start;
+            justify-content: center;
+        }
+    }
+}

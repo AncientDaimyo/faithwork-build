@@ -1,0 +1,32 @@
+{
+  "name": "faithwork-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@egjs/flicking": "^4.11.4",
+    "@egjs/flicking-plugins": "^4.7.1",
+    "@egjs/vue3-flicking": "^4.11.4",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "pinia": "^2.2.2",
+    "posthog-js": "^1.165.0",
+    "sass": "^1.78.0",
+    "sass-loader": "^16.0.1",
+    "swiper": "^11.1.14",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3",
+    "vue-the-mask": "^0.11.1",
+    "vue3-marquee-slider": "^1.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "vite": "^5.4.1",
+    "vite-plugin-vue-devtools": "^7.4.4"
+  }
+}

@@ -1,0 +1,35 @@
+.marquee {
+    overflow: hidden;
+    position: relative;
+    height: auto;
+
+    .marquee-wrapper {
+        display: flex;
+        background-color: #d0e3ff;
+        height: var(--spacing-4xl);
+        /* 66px округлено до 80px (5rem) */
+        align-items: center;
+        justify-content: center;
+
+        .marquee-content {
+            color: white;
+            font-size: var(--spacing-lg);
+            /* 33px округлено до 32px (2rem) */
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding: 0 var(--spacing-md);
+            /* Использована переменная для отступов */
+            animation: marquee 5s linear infinite;
+        }
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}

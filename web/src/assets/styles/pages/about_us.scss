@@ -1,0 +1,19 @@
+.info-content-page {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+
+    .about-us-heading {
+        display: flex;
+        font-size: var(--spacing-xxl);
+        padding: var(--spacing-xl) 0 var(--spacing-xl) var(--menu-spacing) ;
+    }
+
+    .about-us-article{
+        display: block;
+        font-size: var(--spacing-xl);
+        line-height: 1.35;
+        columns: 2;
+        padding: 0 var(--menu-spacing) var(--spacing-xl) var(--menu-spacing);
+    }
+}

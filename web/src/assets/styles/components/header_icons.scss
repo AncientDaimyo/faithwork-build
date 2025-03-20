@@ -1,0 +1,33 @@
+.navigation-icons {
+    height: var(--logo-width);
+    position: absolute;
+    right: var(--menu-spacing);
+    top: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 100;
+
+    &.active {
+        left: 20vw;
+        justify-content: space-between;
+        transition: 1s;
+    }
+
+    .nav-icon {
+        margin-left: var(--menu-probely);
+
+        .header-svg {
+            transform: scale(0.75, 0.75);
+
+            &.black {
+                filter: invert(100%);
+            }
+
+            &:hover {
+                filter: invert(50%);
+            }
+        }
+    }
+}

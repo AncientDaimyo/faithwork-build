@@ -1,0 +1,513 @@
+#account_page {
+    min-height: calc(100vh - var(--logo-width) - 155px);
+    .ajax-info {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: calc(var(--logo-width) + 50px);
+        height: 720px;
+        width: 100vw;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        z-index: -100;
+    }
+    .login-register-block {
+        min-height: calc(100vh - var(--logo-width) - 155px);
+        width: 100vw;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-self: center;
+        &.disable {
+            display: none;
+        }
+
+        .faithwork-form {
+            height: auto;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            z-index: 100;
+
+            .account-full-forms {
+                width: calc((100vw - 2 * var(--menu-spacing)) / 3);
+                height: 600px;
+                border: 2px solid #dddddd85;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+
+                fieldset {
+                    position: relative;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    justify-content: center;
+                    align-items: center;
+
+                    .email-text {
+                        margin-top: 64px;
+                        font-size: 22px;
+                        font-weight: 600;
+                    }
+                    .account-legend {
+                        padding: 0;
+                        width: 100%;
+                        height: auto;
+                        position: absolute;
+                        top: -21px;
+                        left: 0;
+                        display: flex;
+                        flex-flow: column nowrap;
+                        justify-content: center;
+                        align-items: center;
+                        .account-legend-image {
+                            width: 75%;
+                            height: auto;
+                        }
+                    }
+
+                    .form-title {
+                        display: flex;
+                        flex-flow: row nowrap;
+                        justify-content: center;
+                        padding-bottom: 22px;
+
+                        span {
+                            font-size: 33px;
+                            font-weight: 600;
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+
+                    .form-text {
+                        display: flex;
+                        flex-flow: row nowrap;
+                        justify-content: center;
+                        padding-bottom: 22px;
+                        width: 95%;
+
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-align: center;
+                            line-height: 1.2;
+                        }
+
+                        b {
+                            font-weight: 600;
+                        }
+                    }
+
+                    .account-forms {
+                        width: calc((100vw - 2 * var(--menu-spacing)) / 4);
+                        height: 66px;
+
+                        input {
+                            border: 2px solid #334eac;
+                            outline: #334eac;
+                            width: calc((100vw - 2 * var(--menu-spacing)) / 4);
+                            height: 44px;
+                            font-size: 22px;
+
+                            &#password {
+                                font-size: 22px;
+                            }
+                        }
+                    }
+
+                    .account-forms-button {
+                        width: calc((100vw - 2 * var(--menu-spacing)) / 4);
+                        height: 66px;
+
+                        input {
+                            border: 2px solid #334eac;
+                            outline: #334eac;
+                            width: calc((100vw - 2 * var(--menu-spacing)) / 4);
+                            height: 44px;
+                            font-size: 22px;
+                            background: #334eac;
+                            color: white;
+                            text-align: center;
+                            border-radius: 4px;
+                            padding: 0px 22px 0px 22px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .account-full-page {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100vw;
+
+        .account-main-block {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            height: calc((100vh - var(--logo-width) - 155px));
+            width: 50vw;
+            padding-left: var(--menu-spacing);
+
+            .account-user-info {
+                box-sizing: border-box;
+                $top: calc((100vh - var(--logo-width) - 155px) * 0.3);
+                $bottom: calc((100vh - var(--logo-width) - 155px) * 0.3);
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                height: auto;
+                width: 100%;
+
+                // 1 - Имя, 2 - Фамилия, 3 - Email, 4 - Номер, 5 - ДР
+                #account-field-1,
+                #account-field-2 {
+                    display: flex;
+                    font-size: 55px;
+                    margin-right: var(--menu-probely);
+                    height: auto;
+                    justify-content: start;
+                }
+
+                #account-field-3,
+                #account-field-4,
+                #account-field-5 {
+                    font-size: 33px;
+                    width: 100%;
+                    height: auto;
+                    justify-content: start;
+                    display: flex;
+                    margin-top: 11px;
+                }
+            }
+
+            .account_exit {
+                font-size: 22px;
+                color: black;
+            }
+        }
+
+        .account_menu {
+            display: flex;
+            justify-content: end;
+            height: calc((100vh - var(--logo-width) - 155px));
+            width: 50vw;
+            $top: calc((100vh - var(--logo-width) - 155px) * 0.3);
+            $bottom: calc((100vh - var(--logo-width) - 155px) * 0.3);
+            padding: $top var(--menu-spacing) $bottom 0;
+
+            li {
+                padding-bottom: var(--menu-probely);
+                display: flex;
+                justify-content: end;
+
+                .account_exit {
+                    font-size: 22px !important;
+                    color: black;
+                }
+
+                a {
+                    font-size: 44px;
+                    color: black;
+                }
+            }
+        }
+    }
+    .wishlist-full-page {
+        display: flex;
+        justify-content: flex-start;
+        height: calc((100vh - var(--logo-width) - 155px));
+        width: calc(50vw - var(--menu-spacing));
+        padding-top: var(--menu-spacing);
+
+        .wishlist-header {
+            .wishlist-header-total {
+            }
+
+            .wishlist-header-clear {
+            }
+        }
+
+        .catalog-wrap {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+            width: calc((50vw - var(--menu-spacing)) / 3);
+            height: auto;
+            max-height: calc((100vh - var(--logo-width) - 155px) / 1.8);
+            border: 1px solid #dddddd85;
+
+            .catalog-link {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .catalog-like-icon {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                filter: invert(100%);
+                transform: scale(0.75, 0.75);
+                &:hover {
+                    filter: invert(50%);
+                }
+            }
+
+            .catalog-image {
+                width: calc((50vw - var(--menu-spacing)) / 3);
+
+                img {
+                    width: calc((50vw - var(--menu-spacing)) / 3);
+                }
+            }
+
+            .catalog-action-button {
+            }
+
+            .catalog-content {
+                display: flex;
+                flex-flow: column nowrap;
+                width: calc(((50vw - var(--menu-spacing))) / 3);
+                font-size: 22px;
+
+                .catalog-name {
+                    display: flex;
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: var(--menu-probely);
+                }
+
+                .catalog-price {
+                    display: flex;
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: calc(var(--menu-probely) / 2);
+                    margin-bottom: calc(var(--menu-probely) / 2);
+                }
+            }
+        }
+    }
+    .names-and-addresses-full-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc((100vh - var(--logo-width) - 155px));
+        width: calc(50vw - var(--menu-spacing));
+        font-size: 33px;
+
+        .names-changes-block {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            width: 50%;
+            height: auto;
+
+            fieldset {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                .names-changes-forms {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 44px;
+                    margin-top: var(--menu-probely);
+                    box-shadow: none;
+
+                    input {
+                        display: flex;
+                        width: 70%;
+                        height: 44px;
+                        line-height: 22px;
+                        padding: 11px 0 11px 6px;
+                        font-size: 22px;
+                        border: 2px solid #334eac;
+                        outline: #334eac;
+                    }
+
+                    input::placeholder {
+                        font-size: 22px;
+                        text-align: start;
+                        padding: 11px 0 11px 0;
+                    }
+                }
+
+                .names-changes-button {
+                    width: 55%;
+
+                    input {
+                        color: white;
+                        background-color: #334eac;
+                        border: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: auto;
+                        font-size: 17px;
+                        margin-top: 33px;
+                    }
+                }
+            }
+        }
+
+        .addresses-changes-block {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            width: 50%;
+            height: auto;
+
+            fieldset {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                .addresses-changes-forms {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 44px;
+                    margin-top: var(--menu-probely);
+
+                    input {
+                        display: flex;
+                        width: 70%;
+                        height: 44px;
+                        line-height: 22px;
+                        padding: 11px 0 11px 6px;
+                        font-size: 22px;
+                        border: 2px solid #334eac;
+                        outline: #334eac;
+                    }
+
+                    input::placeholder {
+                        font-size: 22px;
+                        text-align: start;
+                        padding: 11px 0 11px 0;
+                    }
+                }
+
+                .addresses-changes-button {
+                    width: 55%;
+
+                    input {
+                        color: white;
+                        background-color: #334eac;
+                        border: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: auto;
+                        font-size: 17px;
+                        margin-top: 33px;
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция для администраторов
+
+    .admin-panel-wrapper {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: calc((100vh - var(--logo-width) - 155px));
+        width: calc(100vw - (2 * var(--menu-spacing)));
+        font-size: 33px;
+        margin-left: var(--menu-spacing);
+        margin-right: var(--menu-spacing);
+
+        #add_product_form {
+            display: flex;
+            height: calc((100vh - var(--logo-width) - 155px));
+            width: calc(100vw - (2 * var(--menu-spacing)));
+
+            fieldset {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: inherit;
+
+                .add-product-forms {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 44px;
+                    margin-bottom: 22px;
+
+                    .add-product-input {
+                        border: 2px solid #334eac;
+                        outline: #334eac;
+                        width: 50%;
+                        height: 33px;
+                    }
+
+                    .add-product-input-cb {
+                        border: 2px solid #334eac;
+                        outline: #334eac;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+
+                .add-product-button {
+                    display: flex;
+                    input {
+                        width: 300px;
+                        height: 66px;
+                        border: 2px solid #334eac;
+                        outline: #334eac;
+                        background-color: #334eac;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        #add_product {
+            width: 300px;
+            height: 66px;
+            border: 2px solid #334eac;
+            outline: #334eac;
+            background-color: #334eac;
+            color: white;
+        }
+
+        #close_product_form {
+            width: 300px;
+            height: 66px;
+            border: 2px solid #334eac;
+            outline: #334eac;
+            background-color: #334eac;
+            color: white;
+        }
+    }
+}

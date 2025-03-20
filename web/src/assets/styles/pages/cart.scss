@@ -1,0 +1,86 @@
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+
+    .cart-page {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        padding: var(--logo-width) var(--menu-spacing);
+    }
+    
+    .empty-cart-message {
+        font-size: var(--spacing-xl);
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-items-container {
+        display: flex;
+        flex-direction: column;
+        width: 65vw;
+        justify-content: center;
+
+        .cart-item {
+            display: flex;
+            max-width: 65vw;
+            max-height: 45vh;   
+            flex-flow: row nowrap;
+            border: 1px solid #8f8f8f80;
+            border-radius: var(--spacing-lg);
+            margin-bottom: var(--spacing-ss);
+            margin-top: var(--spacing-ss);
+
+            .cart-item-image-wrapper {
+                display: flex;
+                max-height: 40vh;
+                aspect-ratio: 2/3;
+                margin: var(--spacing-md);
+
+                .cart-item-image {
+                    max-width: 100%;
+                    border-radius: var(--spacing-md);
+                }
+            }
+
+            .cart-item-info {
+                display: flex;
+                flex-flow: column nowrap;
+                margin: var(--spacing-md);
+                width: 100%;
+                line-height: 1.35;
+
+                .cart-item-name {
+                    font-size: var(--spacing-lg);
+                }
+                .cart-item-size {
+                    font-size: var(--spacing-md);
+                }
+                .cart-item-quantity {
+                    font-size: var(--spacing-ml);
+                    display: flex;
+                    
+                    button {
+                        margin: var(--spacing-sm);
+                        width: 5%;
+                        background-color: black;
+                        color: white;
+                        border: none;
+                        aspect-ratio: 1/1;
+
+                        &:hover {
+                            background-color: rgb(65, 143, 143);
+                            transition: background-color 0.3s 0.3s;
+                        }
+                    }
+                    
+                    span {
+                        margin: var(--spacing-ss);
+                    }
+                }
+            }
+        }
+    }
+}

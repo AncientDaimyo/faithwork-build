@@ -1,0 +1,100 @@
+:root {
+	--base-font-size: 16px;
+	--rem: 16px;
+
+	--spacing-xs: 0.25rem;
+	/* 4px */
+	--spacing-sm: 0.5rem;
+	/* 8px */
+	--spacing-ss: 0.75rem;
+	/* 12px */
+	--spacing-md: 1rem;
+	/* 16px */
+	--spacing-ml: 1.25rem;
+	/* 20px */
+	--spacing-lg: 1.5rem;
+	/* 24px */
+	--spacing-xl: 2rem;
+	/* 32px */
+	--spacing-xxl: 3rem;
+	/* 48px */
+	--spacing-3xl: 4rem;
+	/* 64px */
+	--spacing-4xl: 5rem;
+	/* 80px */
+	--spacing-5xl: 6rem;
+	/* 96px */
+	--spacing-6xl: 8rem;
+	/* 128px */
+	--spacing-7xl: 10rem;
+	/* 160px */
+	--spacing-8xl: 12rem;
+	/* 192px */
+	--spacing-9xl: 14rem;
+	/* 224px */
+	--spacing-10xl: 16rem;
+	/* 256px */
+	--spacing-11xl: 18rem;
+	/* 288px */
+	--spacing-12xl: 20rem;
+	/* 320px */
+	--spacing-13xl: 22rem;
+	/* 352px */
+	--spacing-14xl: 24rem;
+	/* 384px */
+	--spacing-15xl: 26rem;
+	/* 416px */
+	--spacing-16xl: 28rem;
+	/* 448px */
+	--spacing-17xl: 30rem;
+	/* 480px */
+	--spacing-18xl: 32rem;
+	/* 512px */
+	--spacing-19xl: 34rem;
+	/* 544px */
+	--spacing-20xl: 36rem;
+	/* 576px */
+	--spacing-21xl: 38rem;
+	/* 608px */
+	--spacing-22xl: 40rem;
+	/* 640px */
+	--spacing-23xl: 42rem;
+	/* 672px */
+	--spacing-24xl: 44rem;
+	/* 704px */
+	--spacing-25xl: 46rem;
+	/* 736px */
+	--spacing-26xl: 48rem;
+	/* 768px */
+	--spacing-27xl: 50rem;
+	/* 800px */
+	--spacing-28xl: 52rem;
+	/* 832px */
+	--spacing-29xl: 54rem;
+	/* 864px */
+	--spacing-30xl: 56rem;
+	/* 896px */
+	--spacing-31xl: 58rem;
+	/* 928px */
+	--spacing-32xl: 60rem;
+	/* 960px */
+}
+
+html {
+	font-size: var(--base-font-size);
+}
+
+body {
+	font-size: 1rem;
+}
+
+@media (min-width: 1000px) {
+	.mobile {
+		display: none;
+	}
+}
+
+.common-page {
+	min-height: calc(100vh - var(--logo-width) - var(--spacing-10xl));
+	/* Ближайшее к 155px */
+}

@@ -1,0 +1,24 @@
+.contact-us-heading {
+    display: flex;
+    font-size: var(--spacing-xxl);
+    padding: var(--spacing-xl) 0 var(--spacing-xl) var(--menu-spacing);
+}
+
+.contact-us-article {
+    display: block;
+    font-size: var(--spacing-xl);
+    line-height: 1.35;
+    width: 50vw;
+    padding: 0 var(--menu-spacing) var(--spacing-xl) var(--menu-spacing);
+}
+
+.contact-us-picture {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: var(--spacing-xl);
+
+    img {
+        width: 20%;
+    }
+}

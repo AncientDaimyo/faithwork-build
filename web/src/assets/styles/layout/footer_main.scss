@@ -1,0 +1,341 @@
+#footer_main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - var(--logo-width));
+    flex-shrink: 0;
+    background: #EBEEFF;
+}
+
+.footer-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-shrink: 1;
+    /* Позволяем сжиматься */
+}
+
+.footer-top {
+    width: var(--spacing-32xl);
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: var(--spacing-md);
+}
+
+.footer-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.footer-bottom {
+    width: var(--spacing-25xl);
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: var(--spacing-3xl);
+    width: 100%;
+    /* Полная ширина */
+    box-sizing: border-box;
+    /* Учитываем padding в ширине */
+}
+
+.footer-bottom-menu-1,
+.footer-bottom-menu-2,
+.footer-bottom-menu-3 {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    min-width: var(--spacing-6xl);
+}
+
+.footer-bottom-menu-1 {
+    align-items: flex-start;
+}
+
+.footer-bottom-menu-2 {
+    align-items: center;
+}
+
+.footer-bottom-menu-3 {
+    align-items: flex-end;
+}
+
+.footer-second-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-svg {
+    margin: 0 var(--spacing-sm);
+    fill: #000;
+    /* Цвет для иконок */
+}
+
+.footer-bottom-menu-1 h1,
+.footer-bottom-menu-2 h1,
+.footer-bottom-menu-3 h1 {
+    font-size: var(--spacing-xl);
+    /* Увеличенный размер шрифта для заголовков */
+    color: #8C8C8C;
+    padding-bottom: var(--spacing-md);
+}
+
+.footer-bottom-menu-1 a,
+.footer-bottom-menu-2 a,
+.footer-bottom-menu-3 a {
+    font-size: var(--spacing-ml);
+    /* Увеличенный размер шрифта для ссылок */
+    padding-bottom: var(--spacing-md);
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+        color: gray;
+    }
+}
+
+// 320 px ---------------------------------------------------
+
+@media (max-width: 375px) {
+    #footer_main {
+        height: auto;
+        /* Позволяем контенту диктовать высоту */
+        padding-bottom: var(--spacing-lg);
+        /* Дополнительный отступ внизу */
+    }
+
+    .footer-top {
+        width: var(--spacing-10xl);
+        padding-top: var(--spacing-md);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: var(--spacing-lg);
+        width: 45vw;
+        /* Полная ширина */
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: var(--spacing-ml);
+        /* Уменьшаем отступ */
+        width: 100%;
+        /* Полная ширина */
+    }
+
+    .footer-bottom-menu-1 h1,
+    .footer-bottom-menu-2 h1,
+    .footer-bottom-menu-3 h1 {
+        font-size: var(--spacing-lg);
+        /* Уменьшаем шрифт заголовков */
+        text-align: left;
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .footer-bottom-menu-1 a,
+    .footer-bottom-menu-2 a,
+    .footer-bottom-menu-3 a {
+        font-size: var(--spacing-ml);
+        /* Уменьшаем шрифт ссылок */
+        text-align: left;
+        padding-bottom: var(--spacing-ss);
+    }
+}
+
+// 376    -   425 px ------------------------------------------------------
+@media (min-width: 376px) and (max-width: 425px) {
+    .footer-top {
+        width: 100%;
+        padding-top: var(--spacing-md);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40vw;
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: var(--spacing-lg);
+        width: 100%;
+    }
+
+    .footer-bottom-menu-1 h1,
+    .footer-bottom-menu-2 h1,
+    .footer-bottom-menu-3 h1 {
+        font-size: var(--spacing-xl);
+        text-align: left;
+        padding-bottom: var(--spacing-md);
+    }
+
+    .footer-bottom-menu-1 a,
+    .footer-bottom-menu-2 a,
+    .footer-bottom-menu-3 a {
+        font-size: var(--spacing-ml);
+        text-align: left;
+        padding-bottom: var(--spacing-ss);
+    }
+}
+
+// 426    -   500 px ------------------------------------------------------
+@media (min-width: 426px) and (max-width: 500px) {
+    .footer-top {
+        width: 100%;
+        padding-top: var(--spacing-lg);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40vw;
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: var(--spacing-lg);
+        width: 100%;
+        padding-left: var(--spacing-ml);
+    }
+
+    .footer-bottom-menu-1 h1,
+    .footer-bottom-menu-2 h1,
+    .footer-bottom-menu-3 h1 {
+        font-size: var(--spacing-xl);
+        text-align: left;
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .footer-bottom-menu-1 a,
+    .footer-bottom-menu-2 a,
+    .footer-bottom-menu-3 a {
+        font-size: var(--spacing-ml);
+        text-align: left;
+        padding-bottom: var(--spacing-ss);
+    }
+}
+
+// 501    -   768 px ------------------------------------------------------
+@media (min-width: 501px) and (max-width: 768px) {
+    .footer-top {
+        width: 100%;
+        padding-top: var(--spacing-lg);
+    }
+
+    .footer-bottom {
+        width: 100vw;
+    }
+
+    .footer-bottom-menu-1 {
+        padding-left: var(--spacing-xl);
+    }
+
+    .footer-bottom-menu-3 {
+        padding-right: var(--spacing-xl);
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        margin-bottom: var(--spacing-lg);
+        width: 100%;
+    }
+
+    .footer-bottom-menu-1 h1,
+    .footer-bottom-menu-2 h1,
+    .footer-bottom-menu-3 h1 {
+        font-size: var(--spacing-xl);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .footer-bottom-menu-1 a,
+    .footer-bottom-menu-2 a,
+    .footer-bottom-menu-3 a {
+        font-size: var(--spacing-ml);
+        padding-bottom: var(--spacing-ss);
+    }
+}
+
+// 769    -   1024 px ------------------------------------------------------
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer-top {
+        width: var(--spacing-28xl);
+        padding-top: var(--spacing-lg);
+    }
+
+    .footer-bottom {
+        width: var(--spacing-24xl);
+        padding-top: var(--spacing-xl);
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        min-width: var(--spacing-8xl);
+    }
+}
+
+// 1025    -   1440 px ------------------------------------------------------
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .footer-top {
+        width: var(--spacing-30xl);
+        padding-top: var(--spacing-xl);
+    }
+
+    .footer-bottom {
+        width: var(--spacing-26xl);
+        padding-top: var(--spacing-xxl);
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        min-width: var(--spacing-9xl);
+    }
+}
+
+// 1441    -   2560 px ------------------------------------------------------
+@media (min-width: 1441px) and (max-width: 2560px) {
+    .footer-top {
+        width: var(--spacing-32xl);
+        padding-top: var(--spacing-xxl);
+    }
+
+    .footer-bottom {
+        width: var(--spacing-28xl);
+        padding-top: var(--spacing-3xl);
+    }
+
+    .footer-bottom-menu-1,
+    .footer-bottom-menu-2,
+    .footer-bottom-menu-3 {
+        min-width: var(--spacing-10xl);
+    }
+}

@@ -1,0 +1,88 @@
+.account-page-wrapper {
+  font-family: sans-serif; // Добавляем шрифт по умолчанию
+
+  .account-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto; // Отступы сверху/снизу и центрирование
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .account-sections {
+      display: flex;
+
+      .left-section {
+        width: 20%;
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .right-section {
+        width: 80%;
+        padding-left: 2rem;
+
+        h2 {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1rem;
+
+          label {
+            margin-bottom: 0.5rem;
+          }
+
+          input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+
+        }
+
+        .checkbox-group {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          label {
+            margin-left: 0.5rem;
+          }
+        }
+
+        button {
+          background-color: black;
+          color: white;
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &.save-button {
+            width: 100%; // Кнопка "СОХРАНИТЬ" на всю ширину
+          }
+
+        }
+      }
+    }
+  }
+
+}

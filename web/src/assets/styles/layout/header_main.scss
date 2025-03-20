@@ -1,0 +1,37 @@
+#header_main {
+    margin: 0;
+    position: fixed;
+    width: 100vw;
+    height: var(--logo-width);
+    z-index: 100;
+    font-size: 14px;
+    font-weight: 600;
+    & {
+        background-color: transparent;
+        transition: 0.3s;
+    }
+    &:hover {
+        background-color: black;
+        transition: 0.3s;
+    }
+
+    .custom-logo-link {
+        display: inline-block;
+
+        .faithwork-logo {
+            height: var(--logo-width) !important;
+            width: var(--logo-width) !important;
+            margin-left: calc((100vw - var(--logo-width)) / 2);
+            position: absolute;
+            top: 0;
+            z-index: 100;
+        }
+        .faithwork-logo.inactive {
+            display: none;
+        }
+    }
+}
+
+#header_main.header_ride {
+    background-color: black;
+}
