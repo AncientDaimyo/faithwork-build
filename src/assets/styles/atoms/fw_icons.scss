@@ -1,0 +1,33 @@
+.fw-icon {
+    display: inline-block;
+    width: clamp(12px, 24px, 32px); // Минимальная ширина 16px, предпочтительная 3vw, максимальная 32px
+    height: clamp(12px, 24px, 32px); // Минимальная высота 16px, предпочтительная 3vw, максимальная 32px
+    object-fit: contain; // Сохраняет aspect ratio
+    vertical-align: middle;
+    margin: 0.5rem;
+
+    &--rounded {
+        border-radius: 50%;
+    }
+
+    &--shadow {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &--clickable {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &--color-primary {
+        color: #7371FC;
+    }
+
+    &--color-secondary {
+        color: #666;
+    }
+}

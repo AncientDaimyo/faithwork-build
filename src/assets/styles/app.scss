@@ -1,110 +1,117 @@
 /* Mobile S - 320px */
 @media (max-width: 320px) {
 	:root {
-			--logo-width: var(--spacing-xxl);
-			/* 48px */
-			--menu-spacing: var(--spacing-ss);
-			/* 32px */
-			--menu-probely: var(--spacing-ss);
-			/* 8px */
-			--font-size: var(--spacing-ml);
-			/* 8px */
-			--icon-size: var(--spacing-ss);
+		--logo-width: var(--spacing-xxl);
+		/* 48px */
+		--menu-spacing: var(--spacing-ss);
+		/* 32px */
+		--menu-probely: var(--spacing-ss);
+		/* 8px */
+		--font-size: var(--spacing-ml);
+		/* 8px */
+		--icon-size: var(--spacing-ss);
 	}
 }
 
 /* Mobile M - 375px */
 @media (min-width: 321px) and (max-width: 375px) {
 	:root {
-			--logo-width: var(--spacing-xxl);
-			/* 56px */
-			--menu-spacing: var(--spacing-md);
-			/* 40px */
-			--menu-probely: var(--spacing-ss);
-			/* 10px */
-			--font-size: var(--spacing-ml);
-			/* 10px */
-			--icon-size: var(--spacing-ss);
+		--logo-width: var(--spacing-xxl);
+		/* 56px */
+		--menu-spacing: var(--spacing-md);
+		/* 40px */
+		--menu-probely: var(--spacing-ss);
+		/* 10px */
+		--font-size: var(--spacing-ml);
+		/* 10px */
+		--icon-size: var(--spacing-ss);
 	}
 }
 
 /* Mobile L - 425px */
 @media (min-width: 376px) and (max-width: 425px) {
 	:root {
-			--logo-width: var(--spacing-xxl);
-			/* 64px */
-			--menu-spacing: var(--spacing-md);
-			/* 48px */
-			--menu-probely: var(--spacing-ss);
-			/* 12px */
-			--font-size: var(--spacing-ml);
-			/* 12px */
-			--icon-size: var(--spacing-ss);
+		--logo-width: var(--spacing-xxl);
+		/* 64px */
+		--menu-spacing: var(--spacing-md);
+		/* 48px */
+		--menu-probely: var(--spacing-ss);
+		/* 12px */
+		--font-size: var(--spacing-ml);
+		/* 12px */
+		--icon-size: var(--spacing-ss);
 	}
 }
 
 /* Tablet - 768px */
 @media (min-width: 426px) and (max-width: 768px) {
 	:root {
-			--logo-width: var(--spacing-xxl);
-			/* 80px */
-			--menu-spacing: var(--spacing-ml);
-			/* 64px */
-			--menu-probely: var(--spacing-md);
-			/* 16px */
-			--font-size: var(--spacing-lg);
-			/* 16px */
-			--icon-size: var(--spacing-md);
+		--logo-width: var(--spacing-xxl);
+		/* 80px */
+		--menu-spacing: var(--spacing-ml);
+		/* 64px */
+		--menu-probely: var(--spacing-md);
+		/* 16px */
+		--font-size: var(--spacing-lg);
+		/* 16px */
+		--icon-size: var(--spacing-md);
 	}
 }
 
 /* Laptop - 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
 	:root {
-			--logo-width: var(--spacing-xxl);
-			/* 96px */
-			--menu-spacing: var(--spacing-3xl);
-			/* 96px */
-			--menu-probely: var(--spacing-lg);
-			/* 24px */
-			--font-size: var(--spacing-ss);
-			/* 16px */
-			--icon-size: var(--spacing-ml);
+		--logo-width: var(--spacing-xxl);
+		/* 96px */
+		--menu-spacing: var(--spacing-3xl);
+		/* 96px */
+		--menu-probely: var(--spacing-lg);
+		/* 24px */
+		--font-size: var(--spacing-ss);
+		/* 16px */
+		--icon-size: var(--spacing-ml);
 	}
 }
 
 /* Laptop L - 1440px */
 @media (min-width: 1025px) and (max-width: 1440px) {
 	:root {
-			--logo-width: var(--spacing-3xl);
-			/* 96px */
-			--menu-spacing: var(--spacing-5xl);
-			/* 160px, ближайшее к 110px */
-			--menu-probely: var(--spacing-md);
-			/* 24px, ближайшее к 22px */
-			--font-size: var(--spacing-md);
-			/* 24px, ближайшее к 20px */
-			--icon-size: var(--spacing-lg);
+		--logo-width: var(--spacing-3xl);
+		/* 96px */
+		--menu-spacing: var(--spacing-5xl);
+		/* 160px, ближайшее к 110px */
+		--menu-probely: var(--spacing-md);
+		/* 24px, ближайшее к 22px */
+		--font-size: var(--spacing-md);
+		/* 24px, ближайшее к 20px */
+		--icon-size: var(--spacing-lg);
 	}
 }
 
 /* 4K - 2560px */
 @media (min-width: 1441px) and (max-width: 2560px) {
 	:root {
-			--logo-width: var(--spacing-3xl);
-			/* 64px, приблизительно 3.3vw на 1920px ширины */
-			--menu-spacing: var(--spacing-5xl);
-			/* 128px, приблизительно 5.7vw на 1920px ширины */
-			--menu-probely: var(--spacing-lg);
-			/* 16px, приблизительно 1.14vw на 1920px ширины */
-			--font-size: var(--spacing-md);
-			/* 16px, приблизительно 1vw на 1920px ширины */
-			--icon-size: var(--spacing-lg);
+		--logo-width: var(--spacing-3xl);
+		/* 64px, приблизительно 3.3vw на 1920px ширины */
+		--menu-spacing: var(--spacing-5xl);
+		/* 128px, приблизительно 5.7vw на 1920px ширины */
+		--menu-probely: var(--spacing-lg);
+		/* 16px, приблизительно 1.14vw на 1920px ширины */
+		--font-size: var(--spacing-md);
+		/* 16px, приблизительно 1vw на 1920px ширины */
+		--icon-size: var(--spacing-lg);
 	}
 }
 
 //atoms
 @import "atoms/fw_buttons";
+@import "atoms/fw_forms";
+@import "atoms/fw_h_p";
+@import "atoms/fw_img";
+@import "atoms/fw_icons";
+
+//molecules
+@import "molecules/fw_modals";
 
 // base
 @import "base/reset";

@@ -1,0 +1,21 @@
+.fw-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain; // Сохраняет aspect ratio
+    border: 3rem;
+
+    &--rounded {
+        border-radius: 3rem;
+    }
+
+    &--responsive {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &--dynamic {
+        width: 100vw;
+        height: auto;
+    }
+}
