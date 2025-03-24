@@ -2,3 +2,4 @@ host/mysql_data
 .project
 .qodo
 .env
+.vscode
