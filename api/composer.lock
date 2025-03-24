@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ce2028e6f5df6a162fff62279715072",
+    "content-hash": "6ada1e62365c053b4422df5a7a187f96",
     "packages": [
         {
             "name": "doctrine/dbal",
@@ -2762,16 +2762,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.0.9",
+            "version": "12.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7835bb4276780e0bbb385ce0a777b839e03096db"
+                "reference": "9912c83b5207ab3730fcadc42992e95bdb02dad8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7835bb4276780e0bbb385ce0a777b839e03096db",
-                "reference": "7835bb4276780e0bbb385ce0a777b839e03096db",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9912c83b5207ab3730fcadc42992e95bdb02dad8",
+                "reference": "9912c83b5207ab3730fcadc42992e95bdb02dad8",
                 "shasum": ""
             },
             "require": {
@@ -2781,23 +2781,23 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.13.0",
+                "myclabs/deep-copy": "^1.12.1",
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.3",
-                "phpunit/php-code-coverage": "^12.1.0",
+                "phpunit/php-code-coverage": "^12.0.0",
                 "phpunit/php-file-iterator": "^6.0.0",
                 "phpunit/php-invoker": "^6.0.0",
                 "phpunit/php-text-template": "^5.0.0",
                 "phpunit/php-timer": "^8.0.0",
                 "sebastian/cli-parser": "^4.0.0",
-                "sebastian/comparator": "^7.0.1",
+                "sebastian/comparator": "^7.0.0",
                 "sebastian/diff": "^7.0.0",
                 "sebastian/environment": "^8.0.0",
                 "sebastian/exporter": "^7.0.0",
                 "sebastian/global-state": "^8.0.0",
                 "sebastian/object-enumerator": "^7.0.0",
-                "sebastian/type": "^6.0.2",
+                "sebastian/type": "^6.0.0",
                 "sebastian/version": "^6.0.0",
                 "staabm/side-effects-detector": "^1.0.5"
             },
@@ -2839,7 +2839,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.0"
             },
             "funding": [
                 {
@@ -2855,7 +2855,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-19T13:47:33+00:00"
+            "time": "2025-02-07T05:03:33+00:00"
         },
         {
             "name": "sebastian/cli-parser",

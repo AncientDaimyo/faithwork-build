@@ -6,6 +6,8 @@ services:
     volumes:
       - ./api:/var/www/html
       - ./.env:/var/www/html/.env
+      - ./tests:/var/www/html/tests
+      - ./phpunit.xml:/var/www/html/phpunit.xml
     ports:
       - "80"
     depends_on:
