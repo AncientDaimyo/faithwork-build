@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Product\Application\Service;
+namespace App\Product\Service;
 
-use App\Product\Domain\Category;
-use App\Product\Infrastructure\Repository\CategoryRepository;
+use App\Product\Entity\Category;
+use App\Product\Repository\CategoryRepository;
 
 class CategoryService
 {

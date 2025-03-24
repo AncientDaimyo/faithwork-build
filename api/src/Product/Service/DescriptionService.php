@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Product\Application\Service;
+namespace App\Product\Service;
 
-use App\Product\Domain\Description;
-use App\Product\Infrastructure\Repository\DescriptionRepository;
+use App\Product\Entity\Description;
+use App\Product\Repository\DescriptionRepository;
 
 class DescriptionService
 {

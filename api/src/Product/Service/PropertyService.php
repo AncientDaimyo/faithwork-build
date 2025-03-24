@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Product\Application\Service;
+namespace App\Product\Service;
 
-use App\Product\Infrastructure\Repository\PropertyRepository;
-use App\Product\Domain\Property;
+use App\Product\Repository\PropertyRepository;
+use App\Product\Entity\Property;
 
 class PropertyService
 {

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Product\Application\Service;
+namespace App\Product\Service;
 
-use App\Product\Application\Boundary\ProductServiceBoundary;
-use App\Product\Infrastructure\Repository\ProductRepository;
-use App\Product\Domain\Product;
-use Doctrine\DBAL\Types\DecimalType;
+use App\Product\Interface\ProductServiceInterface;
+use App\Product\Repository\ProductRepository;
+use App\Product\Entity\Product;
 
-class ProductService implements ProductServiceBoundary
+class ProductService implements ProductServiceInterface
 {
     protected ProductRepository $productRepository;
     protected CategoryService $categoryService;

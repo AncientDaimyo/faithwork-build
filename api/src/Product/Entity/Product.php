@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Product\Domain;
+namespace App\Product\Entity;
 
 use App\Shared\Domain\Entity\Entity;
-use App\Product\Domain\Description;
+use App\Product\Entity\Description;
 
 class Product extends Entity
 {

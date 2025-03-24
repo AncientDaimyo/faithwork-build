@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Product\Application\Service;
+namespace App\Product\Service;
 
-use App\Product\Domain\Size;
-use App\Product\Infrastructure\Repository\SizeRepository;
+use App\Product\Entity\Size;
+use App\Product\Repository\SizeRepository;
 
 class SizeService
 {

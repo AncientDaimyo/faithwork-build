@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Product\Domain;
+namespace App\Product\Entity;
 
 use App\Shared\Domain\Entity\Entity;
 
-class Category extends Entity
+class Property extends Entity
 {
     protected ?int $id;
     protected ?string $name;
-    protected ?Category $parentCategory;
+    protected ?string $value;
 
     public function __construct(
         ?int $id,
         ?string $name,
-        ?Category $parentCategory
+        ?string $value
     ) {
         $this->id = $id;
         $this->name = $name;
-        $this->parentCategory = $parentCategory;
+        $this->value = $value;
     }
 
     public function jsonSerialize(): mixed
@@ -25,7 +25,7 @@ class Category extends Entity
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'parent_category' => !empty($this->parentCategory) ? $this->parentCategory->jsonSerialize() : null
+            'value' => $this->value
         ];
     }
 }

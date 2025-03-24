@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Product\Infrastructure\Controller;
+namespace App\Product\Controller;
 
-use App\Product\Application\Boundary\ProductServiceBoundary;
+use App\Product\Interface\ProductServiceInterface as ProductService;
 use App\Shared\Infrastructure\Controller\Controller;
 use Psr\Container\ContainerInterface;
 use Slim\Psr7\Response;
@@ -10,9 +10,9 @@ use Slim\Psr7\Request;
 
 class ProductController extends Controller
 {
-    protected ProductServiceBoundary $productServiceBoundary;
+    protected ProductService $productServiceBoundary;
 
-    public function __construct(ContainerInterface $container, ProductServiceBoundary $productServiceBoundary)
+    public function __construct(ContainerInterface $container, ProductService $productServiceBoundary)
     {
         parent::__construct($container);
         $this->productServiceBoundary = $productServiceBoundary;
