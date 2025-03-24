@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Product\Application\Boundary;
+namespace App\Product\Interface;
 
-interface ProductServiceBoundary
+interface ProductServiceInterface
 {
     public function getProducts(): array;
 
