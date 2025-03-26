@@ -21,7 +21,8 @@
       <div class="form-group confirm-password-group">
         <label for="confirmPassword" class="confirm-password-label">Подтверждение пароля:</label>
         <div class="password-wrapper">
-          <input :type="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" v-model="confirmPassword" class="confirm-password-input" />
+          <input :type="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" v-model="confirmPassword"
+            class="confirm-password-input" />
           <button type="button" @click="toggleShowConfirmPassword" class="toggle-password-button">
             <span v-if="showConfirmPassword" class="password-toggle-text">Скрыть</span>
             <span v-else class="password-toggle-text">Показать</span>
@@ -130,4 +131,6 @@ export default {
     };
   },
 };
+
+// Для входа и регистрации сделать отправку форм по нужным путям в SWAGGER схеме с нужными данными
 </script>

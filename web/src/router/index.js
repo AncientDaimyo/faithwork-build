@@ -17,6 +17,8 @@ import TestImage from '../views/Product/controllers/TestImage.vue'
 import BaseElements from '../views/Shared/components/BaseElements.vue'
 import AtomTest from '../views/Content/controllers/AtomTest.vue'
 
+// добавить защиту, сделать доступ на страницу только для войденных пользователей
+
 const routes = [
   {
     path: '/',
