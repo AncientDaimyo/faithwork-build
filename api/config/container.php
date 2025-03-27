@@ -4,8 +4,8 @@ use App\Auth\Service\AuthService;
 use App\Auth\Interface\AuthServiceInterface;
 use App\Order\Service\OrderService;
 use App\Order\Interface\OrderServiceInterface;
-use App\Product\Application\Boundary\ProductServiceBoundary;
-use App\Product\Application\Service\ProductService;
+use App\Product\Service\ProductService;
+use App\Product\Interface\ProductServiceInterface;
 use App\Shared\Utility\Migrations\Adapter\Doctrine\DbalAdapter;
 use App\Shared\Utility\Migrations\Api\MigrationExecutor;
 use Doctrine\DBAL\Connection;
@@ -81,7 +81,7 @@ return [
 
     'migrations_path' => dirname(__DIR__, 1) . DIRECTORY_SEPARATOR . 'migrations',
 
-    ProductServiceBoundary::class => function (ContainerInterface $container) {
+    ProductServiceInterface::class => function (ContainerInterface $container) {
         return $container->get(ProductService::class);
     },
 
