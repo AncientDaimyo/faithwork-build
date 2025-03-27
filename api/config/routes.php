@@ -3,7 +3,7 @@
 use Slim\App;
 use App\Shared\Infrastructure\Controller\ServiceController;
 use App\Admin\Infrastructure\Controller\AdminMigrationsController;
-use App\Product\Infrastructure\Controller\ProductController;
+use App\Product\Controller\ProductController;
 use App\Order\Controller\OrderController;
 use App\Auth\Controller\AuthController;
 use App\Customer\Infrastructure\Controller\CustomerController;
